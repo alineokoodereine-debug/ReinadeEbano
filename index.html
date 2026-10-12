@@ -66,21 +66,24 @@
 
 <section class="cta-bande"><h2>AGENDA TU CITA</h2><p>Au salon à Libreville 08h-19h</p><a class="btn-gold small" onclick="openModal()">RÉSERVER MAINTENANT</a></section>
 
-<!-- GALERIE FIX IPHONE - SIN IFRAME -->
+<!-- REEMPLAZA TODA TU SECCION GALERIE POR ESTA -->
 <section class="section-insta" id="galerie">
-  <div class="section-title"><h2>GALERIE INSTAGRAM</h2><p>@reinadeebano • 21k - Cliquez pour voir</p></div>
-  <div class="insta-grid">
-    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="insta-card">
-      <img src="img1.jpeg" alt="Reina" loading="lazy"><div class="insta-overlay">❤️ @reinadeebano</div>
-    </a>
-    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="insta-card">
-      <img src="img2.jpeg" alt="Reina" loading="lazy"><div class="insta-overlay">✨ Tresses</div>
-    </a>
-    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="insta-card">
-      <img src="img3.jpeg" alt="Reina" loading="lazy"><div class="insta-overlay">👑 Luxe</div>
-    </a>
+  <div class="section-title"><h2>GALERIE INSTAGRAM</h2><p>@reinadeebano • 21k • Feed en vivo de tu mamá</p></div>
+  <div class="insta-grid" style="grid-template-columns:1fr; max-width:540px; margin:28px auto 0;">
+    <div class="insta-card" style="height:740px; background:#fff; padding:0; border-radius:14px; overflow:hidden; border:1px solid rgba(0,0,0,0.1);">
+      <!-- ESTE ES EL FEED REAL DE TU MAMA COMO LO TENIAS ANTES -->
+      <iframe src="https://www.instagram.com/reinadeebano/embed/" 
+        width="100%" height="740" frameborder="0" scrolling="no" 
+        allowtransparency="true" 
+        style="width:100%!important; height:740px; border:none; background:#fff; display:block;">
+      </iframe>
+    </div>
   </div>
-  <div style="text-align:center;margin-top:20px"><a href="https://www.instagram.com/reinadeebano/" target="_blank" class="btn-gold small">VOIR SUR INSTAGRAM 📸</a></div>
+  <!-- ESTE SCRIPT ES EL QUE ARREGLA IPHONE -->
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <div style="text-align:center;margin-top:18px">
+    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="btn-gold small">VOIR SUR INSTAGRAM 📸</a>
+  </div>
 </section>
 
 <footer class="footer"><div><h4>REINA | EBANO</h4><p>Libreville - Au salon</p></div><div class="footer-col center"><h4>CONTACT</h4><p>IG @reinadeebano</p></div><div class="footer-col right"><h4>HORAIRE</h4><p>Lun-Sam 08h-19h</p></div></footer>
