@@ -94,119 +94,97 @@ const WHATSAPP_NUM="24162516457";
 const AIRTEL_NUM="+241 74 83 37 42";
 const SHEET_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/export?format=csv";
 
-let selectedColor="Noir 1B",selectedTime=null;
+let selectedColor="Noir 1B",selectedTime=null, HORAIRE_GLOBAL="08h-19h";
+
 const dateInput=document.getElementById('selDate');
 dateInput.min=new Date().toISOString().split('T')[0];
 dateInput.max=new Date(Date.now()+30*24*3600*1000).toISOString().split('T')[0];
 dateInput.value=dateInput.min;
 
 function playMama(){const v=document.getElementById('videoMama');const b=document.getElementById('playBtn');if(v){v.play();b.style.display='none';}}
+function initCarousels(){document.querySelectorAll('.carousel').forEach(car=>{const track=car.querySelector('.carousel-track');const dotsBox=car.querySelector('.car-dots');if(!track||!dotsBox) return;dotsBox.innerHTML='';[...track.children].forEach((_,i)=>{const dot=document.createElement('span');dot.className='car-dot'+(i===0?' active':'');dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};dotsBox.appendChild(dot);});car.dataset.index=0;updateCarousel(car);});}
+function updateCarousel(car){const idx=parseInt(car.dataset.index||0);car.querySelector('.carousel-track').style.transform=`translateX(-${idx*100}%)`;car.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
+function moveSlide(btn,dir){const car=btn.closest('.carousel');const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;let idx=parseInt(car.dataset.index||0)+dir;if(idx<0) idx=total-1;if(idx>=total) idx=0;car.dataset.index=idx;updateCarousel(car);}
 
-function initCarousels(){
-  document.querySelectorAll('.carousel').forEach(car=>{
-    const track=car.querySelector('.carousel-track');
-    const dotsBox=car.querySelector('.car-dots');
-    if(!track||!dotsBox) return;
-    dotsBox.innerHTML='';
-    [...track.children].forEach((_,i)=>{
-      const dot=document.createElement('span');
-      dot.className='car-dot'+(i===0?' active':'');
-      dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};
-      dotsBox.appendChild(dot);
-    });
-    car.dataset.index=0;
-    updateCarousel(car);
-  });
+function renderTimes(){
+  const c=document.getElementById('selTimes'); if(!c) return; c.innerHTML="";
+  // Lee horario del sheet si existe, si no 8-19
+  let start=8, end=19;
+  if(HORAIRE_GLOBAL.includes('FERMÉ')){c.innerHTML="<small style='opacity:0.6'>Fermé aujourd'hui - Contacte sur WhatsApp</small>"; return;}
+  const match=HORAIRE_GLOBAL.match(/(\d+).*?(\d+)/); if(match){start=parseInt(match[1]); end=parseInt(match[2]);}
+  for(let h=start; h<end; h++){for(let m of[0,30]){const l=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;c.innerHTML+=`<button class="time-btn" onclick="selectTime(this,'${l}')">${l}</button>`;}}
 }
-function updateCarousel(car){
-  const idx=parseInt(car.dataset.index||0);
-  car.querySelector('.carousel-track').style.transform=`translateX(-${idx*100}%)`;
-  car.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
-}
-function moveSlide(btn,dir){
-  const car=btn.closest('.carousel');
-  const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;
-  let idx=parseInt(car.dataset.index||0)+dir;
-  if(idx<0) idx=total-1;
-  if(idx>=total) idx=0;
-  car.dataset.index=idx;
-  updateCarousel(car);
-}
-
-function renderTimes(){const c=document.getElementById('selTimes');c.innerHTML="";for(let h=8;h<19;h++){for(let m of[0,30]){const l=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;c.innerHTML+=`<button class="time-btn" onclick="selectTime(this,'${l}')">${l}</button>`;}}}
 function selectTime(el,l){document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedTime=l;}
 function selectColor(el,name){document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active'));el.classList.add('active');selectedColor=name;document.getElementById('colorName').innerText=name;}
-function openModal(i=0){const sel=document.getElementById('selService');if(sel) sel.selectedIndex=i;renderTimes();document.getElementById('modal').classList.add('active');}
+function openModal(i=0){document.getElementById('selService').selectedIndex=i;renderTimes();document.getElementById('modal').classList.add('active');}
 function closeModal(){document.getElementById('modal').classList.remove('active');}
-function sendWhatsApp(){const s=document.getElementById('selService').value;const d=document.getElementById('selDate').value;const n=document.getElementById('selName').value||"Cliente";if(!selectedTime){alert("Choisis heure 08h-19h");return;}const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime}%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');}
+function sendWhatsApp(){const s=document.getElementById('selService').value;const d=document.getElementById('selDate').value;const n=document.getElementById('selName').value||"Cliente";if(!selectedTime){alert("Choisis heure");return;}const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime}%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');}
+
+// PARSEADOR INTELIGENTE DE TU SHEET
+function getColIndex(headers, names){for(let n of names){const idx=headers.findIndex(h=>h.toLowerCase().includes(n.toLowerCase())); if(idx>-1) return idx;} return -1;}
 
 async function loadFromSheet(){
   const grid=document.querySelector('.services-grid');
   const selService=document.getElementById('selService');
+  const annonceBar=document.getElementById('annonceBar');
+  const colorsBox=document.getElementById('selColors');
   try{
-    const res=await fetch(SHEET_CSV);
-    const text=await res.text();
-    const lines=text.split(/\r?\n/).filter(l=>l.trim()!='');
-    if(lines.length<2) return;
-    const header=lines[0].toLowerCase();
-    const idxService=header.indexOf('service')>-1?0:0;
-    // parse simple
-    const rows=lines.slice(1);
-    grid.innerHTML='';
-    selService.innerHTML='';
-    let validIndex=0;
-    rows.forEach(line=>{
-      // split respetando comillas
-      const cols=line.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
-      if(cols.length<3) return;
-      const [service,desc,price,photo_url,active]=cols;
-      if(!service) return;
-      if(active && active.toLowerCase()==='false') return;
+    const res=await fetch(SHEET_CSV); const text=await res.text();
+    const lines=text.split(/\r?\n/).filter(l=>l.trim()!=''); if(lines.length<2) throw "sheet vacio";
+    const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim());
+    const iService=getColIndex(headers,['service']); const iDesc=getColIndex(headers,['description','desc']); const iPrice=getColIndex(headers,['price','prix','precio']); const iPhoto=getColIndex(headers,['photo_url','photo','fotos','imagen']); const iInclus=getColIndex(headers,['inclus']); const iCouleurs=getColIndex(headers,['couleur','color']); const iAnnonce=getColIndex(headers,['annonce','anuncio','oferta','promo']); const iHoraire=getColIndex(headers,['horaire','horario']); const iActive=getColIndex(headers,['active','activo']);
 
-      const files=(photo_url||'').split(';').map(s=>s.trim()).filter(Boolean);
-      if(files.length===0) return;
+    let annonceText=""; let allCouleurs=new Set();
+    grid.innerHTML=''; selService.innerHTML='';
 
-      const trackHtml=files.map(f=>{
-        if(/\.(mp4|mov|webm)$/i.test(f)){
-          return `<video src="${f}" autoplay muted loop playsinline></video>`;
-        }else{
-          return `<img src="${f}" alt="${service}" onerror="this.style.display='none'">`;
-        }
-      }).join('');
+    let serviceIdx=0;
+    for(let k=1;k<lines.length;k++){
+      const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
+      if(cols.length<3) continue;
+      const active = iActive>-1? cols[iActive] : "TRUE"; if(active.toLowerCase()==='false') continue;
 
-      grid.innerHTML+=`
-        <div class="service-card">
-          <div class="carousel" data-index="0">
-            <div class="carousel-track">${trackHtml}</div>
-            <button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button>
-            <button class="car-btn next" onclick="moveSlide(this,1)">›</button>
-            <div class="car-dots"></div>
-          </div>
-          <div class="service-body">
-            <h3>${service.toUpperCase()}</h3>
-            <p>${desc||''}</p>
-            <span class="badge-inclus">Extensions incluses</span>
-            <div class="price">${price} FCFA</div>
-            <button class="btn-more" onclick="openModal(${validIndex})">Más info →</button>
-          </div>
-        </div>`;
+      const service=cols[iService]||""; if(!service) continue;
+      const desc=cols[iDesc]||""; const price=cols[iPrice]||""; const photo_url=cols[iPhoto]||""; const inclus=cols[iInclus]||"Extensions incluses"; const couleurs=cols[iCouleurs]||""; const annonce=cols[iAnnonce]||""; const horaire=cols[iHoraire]||"08h-19h";
 
-      const opt=document.createElement('option');
-      opt.value=`${service} - ${price}F`;
-      opt.textContent=`${service} - ${price}F`;
-      selService.appendChild(opt);
-      validIndex++;
-    });
-    initCarousels();
-  }catch(err){
-    console.error(err);
-    // si falla el sheet, mantiene el HTML estático que ya tienes
-    initCarousels();
-  }
+      if(annonce &&!annonceText) annonceText=annonce; // primera annonce que encuentre
+      if(horaire) HORAIRE_GLOBAL=horaire;
+
+      const files=photo_url.split(';').map(s=>s.trim()).filter(Boolean);
+      const trackHtml=files.map(f=> /\.(mp4|mov|webm)$/i.test(f)? `<video src="${f}" autoplay muted loop playsinline></video>` : `<img src="${f}" alt="${service}" onerror="this.style.display='none'">`).join('') || `<img src="placeholder.jpg">`;
+
+      grid.innerHTML+=`<div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track">${trackHtml}</div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>${service.toUpperCase()}</h3><p>${desc}</p><span class="badge-inclus">${inclus}</span><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${serviceIdx})">Más info →</button></div></div>`;
+
+      const opt=document.createElement('option'); opt.value=`${service} - ${price}F`; opt.textContent=`${service} - ${price}F`; selService.appendChild(opt);
+
+      // acumular colores
+      if(couleurs){couleurs.split(';').forEach(c=>{if(c.trim()) allCouleurs.add(c.trim());});}
+      serviceIdx++;
+    }
+
+    // RENDER ANNONCE - cuadradito lindo
+    if(annonceText && annonceBar){
+      // formato: "Texto oferta | foto.jpg" o solo texto
+      const parts=annonceText.split('|'); const txt=parts[0]; const img=parts[1]||"";
+      annonceBar.innerHTML = img? `<span style="display:flex;align-items:center;justify-content:center;gap:10px"><img src="${img.trim()}" style="width:32px;height:32px;border-radius:6px;object-fit:cover"> ${txt}</span>` : txt;
+      annonceBar.classList.add('active');
+    }
+
+    // RENDER COULEURS GLOBALES
+    if(colorsBox && allCouleurs.size>0){
+      colorsBox.innerHTML='';
+      [...allCouleurs].forEach((c,i)=>{
+        const [name, foto]=c.split(':').map(s=>s.trim());
+        const imgTag = foto? `<img src="${foto}">` : `<div style="width:100%;height:100%;background:${name}"></div>`;
+        colorsBox.innerHTML+=`<div class="variant-dot ${i===0?'active':''}" onclick="selectColor(this,'${name||c}')">${imgTag}</div>`;
+      });
+      document.getElementById('colorName').innerText=[...allCouleurs][0].split(':')[0];
+      selectedColor=[...allCouleurs][0].split(':')[0];
+    }
+
+    renderTimes(); initCarousels();
+  }catch(e){console.error(e); initCarousels(); renderTimes();}
 }
-
-renderTimes();
-loadFromSheet();
+renderTimes(); loadFromSheet();
 </script>
 </body>
 </html>
