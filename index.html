@@ -28,7 +28,6 @@
 <section class="section-services" id="services">
   <div class="section-title"><h2>SERVICIOS EXCLUSIVOS</h2><p>Desliza para ver más fotos del mismo servicio</p></div>
   <div class="services-grid">
-    <!-- ESTATICO FALLBACK SI SHEET FALLA - YA CORREGIDO IPHONE -->
     <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img1.jpeg" loading="lazy" onerror="this.style.display='none'"><img src="img1b.jpeg" loading="lazy"><img src="img1c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>TRESSES AFRICAINES</h3><p>4-6 semanas.</p><span class="badge-inclus">Extensions incluses</span><div class="price">35.000 FCFA</div><button class="btn-more" onclick="openModal(0)">Más info →</button></div></div>
     <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img2.jpeg" loading="lazy"><img src="img2b.jpeg" loading="lazy"><img src="img2c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>CORNROWS</h3><p>Geométricos.</p><span class="badge-inclus">Extensions incluses</span><div class="price">25.000 FCFA</div><button class="btn-more" onclick="openModal(1)">Más info →</button></div></div>
     <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img3.jpeg" loading="lazy"><img src="img3b.jpeg" loading="lazy"><img src="img3c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>FULANI BRAIDS</h3><p>Perlas y oro.</p><span class="badge-inclus">Extensions incluses</span><div class="price">40.000 FCFA</div><button class="btn-more" onclick="openModal(2)">Más info →</button></div></div>
@@ -66,12 +65,10 @@
 
 <section class="cta-bande"><h2>AGENDA TU CITA</h2><p>Au salon à Libreville 08h-19h</p><a class="btn-gold small" onclick="openModal()">RÉSERVER MAINTENANT</a></section>
 
-<!-- REEMPLAZA TODA TU SECCION GALERIE POR ESTA -->
 <section class="section-insta" id="galerie">
   <div class="section-title"><h2>GALERIE INSTAGRAM</h2><p>@reinadeebano • 21k • Feed en vivo de tu mamá</p></div>
   <div class="insta-grid" style="grid-template-columns:1fr; max-width:540px; margin:28px auto 0;">
     <div class="insta-card" style="height:740px; background:#fff; padding:0; border-radius:14px; overflow:hidden; border:1px solid rgba(0,0,0,0.1);">
-      <!-- ESTE ES EL FEED REAL DE TU MAMA COMO LO TENIAS ANTES -->
       <iframe src="https://www.instagram.com/reinadeebano/embed/" 
         width="100%" height="740" frameborder="0" scrolling="no" 
         allowtransparency="true" 
@@ -79,7 +76,6 @@
       </iframe>
     </div>
   </div>
-  <!-- ESTE SCRIPT ES EL QUE ARREGLA IPHONE -->
   <script async src="https://www.instagram.com/embed.js"></script>
   <div style="text-align:center;margin-top:18px">
     <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="btn-gold small">VOIR SUR INSTAGRAM 📸</a>
@@ -108,21 +104,93 @@
 <script>
 const WHATSAPP_NUM="24162516457"; const AIRTEL_NUM="+241 74 83 37 42";
 const SHEET_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/export?format=csv";
+// --- NUEVO: HOJA DE RESERVAS ---
+const RESERVAS_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/gviz/tq?tqx=out:csv&sheet=Reservas";
+const SCRIPT_URL="PON_AQUI_TU_URL_DE_APPS_SCRIPT"; // <- si no tienes, déjalo así, igual bloquea local
 let selectedColor="Noir 1B",selectedTime=null, HORAIRE_GLOBAL="08h-19h";
+let reservasBloqueadas = []; // [{date: '2026-05-14', time:'10:00'}]
+
 const dateInput=document.getElementById('selDate');
 dateInput.min=new Date().toISOString().split('T')[0];
 dateInput.max=new Date(Date.now()+30*24*3600*1000).toISOString().split('T')[0];
 dateInput.value=dateInput.min;
+
 function playMama(){const v=document.getElementById('videoMama');const b=document.getElementById('playBtn');if(v){v.play();b.style.display='none';}}
 function initCarousels(){document.querySelectorAll('.carousel').forEach(car=>{const track=car.querySelector('.carousel-track');const dotsBox=car.querySelector('.car-dots');if(!track||!dotsBox) return;dotsBox.innerHTML='';[...track.children].forEach((_,i)=>{const dot=document.createElement('span');dot.className='car-dot'+(i===0?' active':'');dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};dotsBox.appendChild(dot);});car.dataset.index=0;updateCarousel(car);});}
 function updateCarousel(car){const idx=parseInt(car.dataset.index||0);car.querySelector('.carousel-track').style.transform=`translateX(-${idx*100}%)`;car.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
 function moveSlide(btn,dir){const car=btn.closest('.carousel');const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;let idx=parseInt(car.dataset.index||0)+dir;if(idx<0) idx=total-1;if(idx>=total) idx=0;car.dataset.index=idx;updateCarousel(car);}
-function renderTimes(){const c=document.getElementById('selTimes');if(!c) return;c.innerHTML="";let start=8,end=19;if(HORAIRE_GLOBAL.toUpperCase().includes('FERMÉ')){c.innerHTML="<small style='opacity:0.6'>Fermé - Contacte WhatsApp</small>";return;}const m=HORAIRE_GLOBAL.match(/(\d+).*?(\d+)/);if(m){start=parseInt(m[1]);end=parseInt(m[2]);}for(let h=start;h<end;h++){for(let mm of[0,30]){const l=`${String(h).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;c.innerHTML+=`<button class="time-btn" onclick="selectTime(this,'${l}')">${l}</button>`;}}}
-function selectTime(el,l){document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedTime=l;}
+
+// --- NUEVO: GESTION BLOQUEO ---
+function loadLocalBloqueos(){
+  try{ const l=localStorage.getItem('reina_bloqueados_v1'); if(l) reservasBloqueadas = reservasBloqueadas.concat(JSON.parse(l)); }catch(e){}
+}
+function saveLocalBloqueo(date,time){
+  const key='reina_bloqueados_v1'; let arr=[]; try{ arr=JSON.parse(localStorage.getItem(key)||'[]'); }catch(e){} arr.push({date,time}); localStorage.setItem(key, JSON.stringify(arr));
+}
+function isBloqueado(date,time){
+  return reservasBloqueadas.some(r=> r.date===date && r.time===time);
+}
+async function loadReservasBloqueadas(){
+  loadLocalBloqueos();
+  try{
+    const res=await fetch(RESERVAS_CSV); if(!res.ok) throw "no reservas"; const txt=await res.text();
+    const lines=txt.split(/\r?\n/).filter(l=>l.trim()!=''); if(lines.length<2) throw "vacia";
+    const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim().toLowerCase());
+    const iDate=headers.findIndex(h=>h.includes('date')); const iTime=headers.findIndex(h=>h.includes('time')||h.includes('heure')||h.includes('hora'));
+    for(let k=1;k<lines.length;k++){
+      const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
+      if(iDate>-1 && iTime>-1){ const d=cols[iDate]; const t=cols[iTime]; if(d&&t){ reservasBloqueadas.push({date:d, time:t}); } }
+    }
+  }catch(e){ console.log("Reservas sheet no cargó, uso localStorage",e); }
+  renderTimes();
+}
+
+function renderTimes(){
+  const c=document.getElementById('selTimes'); if(!c) return; c.innerHTML=""; 
+  let start=8,end=19; 
+  if(HORAIRE_GLOBAL.toUpperCase().includes('FERMÉ')){c.innerHTML="<small style='opacity:0.6'>Fermé - Contacte WhatsApp</small>";return;}
+  const m=HORAIRE_GLOBAL.match(/(\d+).*?(\d+)/); if(m){start=parseInt(m[1]);end=parseInt(m[2]);}
+  const selectedDate = document.getElementById('selDate').value;
+  for(let h=start;h<end;h++){for(let mm of[0,30]){
+    const l=`${String(h).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
+    const bloqueado = isBloqueado(selectedDate,l);
+    if(bloqueado){
+      c.innerHTML+=`<button class="time-btn bloqueado" disabled> ${l} 🔒</button>`;
+    }else{
+      c.innerHTML+=`<button class="time-btn" onclick="selectTime(this,'${l}')">${l}</button>`;
+    }
+  }}
+}
+function selectTime(el,l){
+  const selDate=document.getElementById('selDate').value;
+  if(isBloqueado(selDate,l)) return;
+  document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active'); selectedTime=l;
+}
 function selectColor(el,name){document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active'));el.classList.add('active');selectedColor=name;document.getElementById('colorName').innerText=name;}
 function openModal(i=0){const sel=document.getElementById('selService');if(sel&&sel.options[i]) sel.selectedIndex=i;renderTimes();document.getElementById('modal').classList.add('active');}
 function closeModal(){document.getElementById('modal').classList.remove('active');}
-function sendWhatsApp(){const s=document.getElementById('selService').value;const d=document.getElementById('selDate').value;const n=document.getElementById('selName').value||"Cliente";if(!selectedTime){alert("Choisis heure");return;}const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime}%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');}
+
+function sendWhatsApp(){
+  const s=document.getElementById('selService').value;
+  const d=document.getElementById('selDate').value;
+  const n=document.getElementById('selName').value||"Cliente";
+  if(!selectedTime){alert("Choisis heure");return;}
+  if(isBloqueado(d,selectedTime)){ alert("Ce créneau est déjà réservé 🔒 Choisis un autre"); renderTimes(); return; }
+  // BLOQUEA PARA SIEMPRE
+  reservasBloqueadas.push({date:d,time:selectedTime});
+  saveLocalBloqueo(d,selectedTime);
+  // Intenta guardar en Google Sheet (si tienes Apps Script)
+  try{
+    if(SCRIPT_URL && !SCRIPT_URL.includes("PON_AQUI")){
+      fetch(SCRIPT_URL, {method:'POST', mode:'no-cors', body: JSON.stringify({Date:d, Time:selectedTime, Service:s, Nom:n, Telephone:WHATSAPP_NUM, Couleur:selectedColor})});
+    }
+  }catch(e){console.log(e)}
+  const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime}%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;
+  renderTimes();
+  window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
+}
+
 function getCol(headers,names){for(let n of names){const idx=headers.findIndex(h=>h.toLowerCase().includes(n));if(idx>-1) return idx;}return -1;}
 async function loadFromSheet(){
   const grid=document.querySelector('.services-grid'); const selService=document.getElementById('selService'); const annonceBar=document.getElementById('annonceBar'); const colorsBox=document.getElementById('selColors');
@@ -131,7 +199,6 @@ async function loadFromSheet(){
     const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim().toLowerCase());
     const iS=getCol(headers,['service']); const iD=getCol(headers,['description','desc']); const iP=getCol(headers,['price','prix']); const iPh=getCol(headers,['photo']); const iIn=getCol(headers,['inclus']); const iCo=getCol(headers,['couleur','color']); const iAn=getCol(headers,['annonce','promo']); const iHo=getCol(headers,['horaire','horario']); const iAc=getCol(headers,['active']);
     let annonceText=""; let allColors=new Set(); let hasSheetData=false;
-    // Limpiar solo si hay datos válidos
     const tempRows=[];
     for(let k=1;k<lines.length;k++){
       const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
@@ -153,7 +220,8 @@ async function loadFromSheet(){
     if(hasSheetData){renderTimes(); initCarousels();}
   }catch(e){console.log("Sheet no cargó, usando fallback estático",e); renderTimes(); initCarousels();}
 }
-renderTimes(); initCarousels(); loadFromSheet();
+dateInput.addEventListener('change', ()=>{ selectedTime=null; renderTimes(); });
+renderTimes(); initCarousels(); loadFromSheet(); loadReservasBloqueadas();
 </script>
 </body>
 </html>
