@@ -48,3 +48,14 @@ h1,h2{font-family:'Cormorant Garamond',serif}
   min-width:0!important;
   max-width:100%!important;
 }
+
+/* === BLOQUEO DE HUECOS - REINA === */
+.time-btn.bloqueado{
+  background:#E8E0D5!important;
+  color:#9A8A7A!important;
+  border:1px dashed #C2B5A3!important;
+  cursor:not-allowed!important;
+  opacity:0.65;
+  text-decoration:line-through;
+}
+.time-btn.bloqueado:hover{transform:none!important}
