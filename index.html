@@ -1,227 +1,116 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reina de Ebano | Salon Afro Libreville - 23 ans Espagne</title>
-<meta name="description" content="Salon afro luxe Libreville. 23 ans d'expérience Espagne. Tresses, Cornrows, Fulani, Knotless. Extensions incluses. 21k @reinadeebano">
+<title>Reina de Ebano | Salon Afro Libreville</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="annonceBar" class="annonce-bar"></div>
-<nav class="navbar">
-  <div class="logo">REINA <span>| EBANO</span></div>
-  <div class="nav-links"><a href="#accueil">Accueil</a><span class="dot">•</span><a href="#services">Services</a><span class="dot">•</span><a href="#apropos">À propos</a><span class="dot">•</span><a href="#galerie">Galerie</a></div>
-  <a class="btn-gold" onclick="openModal()">RÉSERVER</a>
-</nav>
-
-<section class="hero" id="accueil">
-  <div class="hero-content">
-    <h1>ART EN TRESSES.<br><span class="gold-text">LUXE DANS CHAQUE DÉTAIL</span></h1>
-    <p><strong>23 ans d'expérience - Formée en Espagne.</strong><br>Salon afro haut de gamme Libreville. 21k @reinadeebano - Extensions incluses.</p>
-    <div class="hero-btns"><a class="btn-gold" onclick="openModal()">RÉSERVER CITA</a><a class="btn-outline" href="#services">VOIR SERVICES</a></div>
-  </div>
-  <div class="hero-img"><img src="reinahero.jpg" alt="Reina Hero" loading="eager"></div>
-</section>
-
-<section class="section-services" id="services">
-  <div class="section-title"><h2>SERVICIOS EXCLUSIVOS</h2><p>Desliza para ver más fotos del mismo servicio</p></div>
-  <div class="services-grid">
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img1.jpeg" loading="lazy" onerror="this.style.display='none'"><img src="img1b.jpeg" loading="lazy"><img src="img1c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>TRESSES AFRICAINES</h3><p>4-6 semanas.</p><span class="badge-inclus">Extensions incluses</span><div class="price">35.000 FCFA</div><button class="btn-more" onclick="openModal(0)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img2.jpeg" loading="lazy"><img src="img2b.jpeg" loading="lazy"><img src="img2c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>CORNROWS</h3><p>Geométricos.</p><span class="badge-inclus">Extensions incluses</span><div class="price">25.000 FCFA</div><button class="btn-more" onclick="openModal(1)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img3.jpeg" loading="lazy"><img src="img3b.jpeg" loading="lazy"><img src="img3c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>FULANI BRAIDS</h3><p>Perlas y oro.</p><span class="badge-inclus">Extensions incluses</span><div class="price">40.000 FCFA</div><button class="btn-more" onclick="openModal(2)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img4.jpeg" loading="lazy"><img src="img4b.jpeg" loading="lazy"><img src="img4c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>KNOTLESS</h3><p>Ligero.</p><span class="badge-inclus">Extensions incluses</span><div class="price">38.000 FCFA</div><button class="btn-more" onclick="openModal(3)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img5.jpeg" loading="lazy"><img src="img5b.jpeg" loading="lazy"><img src="img5c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>BOHO BRAIDS</h3><p>Boho chic.</p><span class="badge-inclus">Extensions incluses</span><div class="price">42.000 FCFA</div><button class="btn-more" onclick="openModal(4)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img6.jpeg" loading="lazy"><img src="img6b.jpeg" loading="lazy"><img src="img6c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>GODDESS LOCS</h3><p>Luxe.</p><span class="badge-inclus">Extensions incluses</span><div class="price">45.000 FCFA</div><button class="btn-more" onclick="openModal(5)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img7.jpeg" loading="lazy"><img src="img7b.jpeg" loading="lazy"><img src="img7c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>BOX BRAIDS</h3><p>Classique.</p><span class="badge-inclus">Extensions incluses</span><div class="price">35.000 FCFA</div><button class="btn-more" onclick="openModal(6)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img8.jpeg" loading="lazy"><img src="img8b.jpeg" loading="lazy"><img src="img8c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>STITCH BRAIDS</h3><p>Tendance.</p><span class="badge-inclus">Extensions incluses</span><div class="price">30.000 FCFA</div><button class="btn-more" onclick="openModal(7)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img9.jpeg" loading="lazy"><video src="vid9.mp4" autoplay muted loop playsinline preload="metadata"></video><img src="img9b.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>TRESSES AFRICAINES</h3><p>4-6 semanas.</p><span class="badge-inclus">Extensions incluses</span><div class="price">35.000 FCFA</div><button class="btn-more" onclick="openModal(8)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img10.jpeg" loading="lazy"><video src="vid10.mp4" autoplay muted loop playsinline preload="metadata"></video><img src="img10b.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>FULANI JUMBO</h3><p>Perlas.</p><span class="badge-inclus">Extensions incluses</span><div class="price">40.000 FCFA</div><button class="btn-more" onclick="openModal(9)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img11.jpeg" loading="lazy"><img src="img11b.jpeg" loading="lazy"><img src="img11c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>KNOTLESS BOB</h3><p>Court luxe.</p><span class="badge-inclus">Extensions incluses</span><div class="price">38.000 FCFA</div><button class="btn-more" onclick="openModal(10)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img12.jpeg" loading="lazy"><img src="img12b.jpeg" loading="lazy"><img src="img12c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>TRIBAL BRAIDS</h3><p>Art.</p><span class="badge-inclus">Extensions incluses</span><div class="price">38.000 FCFA</div><button class="btn-more" onclick="openModal(11)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img13.jpeg" loading="lazy"><img src="img13b.jpeg" loading="lazy"><img src="img13c.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>BRAIDS KIDS</h3><p>Enfants.</p><span class="badge-inclus">Extensions incluses</span><div class="price">25.000 FCFA</div><button class="btn-more" onclick="openModal(12)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img14.jpeg" loading="lazy"><video src="vid14.mp4" autoplay muted loop playsinline preload="metadata"></video><img src="img14b.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>CORNROWS ART</h3><p>Design.</p><span class="badge-inclus">Extensions incluses</span><div class="price">28.000 FCFA</div><button class="btn-more" onclick="openModal(13)">Más info →</button></div></div>
-    <div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track"><img src="img15.jpeg" loading="lazy"><video src="vid15.mp4" autoplay muted loop playsinline preload="metadata"></video><img src="img15b.jpeg" loading="lazy"></div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>WIG INSTALL</h3><p>Perruque.</p><span class="badge-inclus">Extensions incluses</span><div class="price">30.000 FCFA</div><button class="btn-more" onclick="openModal(14)">Más info →</button></div></div>
-  </div>
-</section>
-
-<section class="about" id="apropos">
-  <div class="about-img">
-    <video id="videoMama" src="moi-video.mp4" poster="moi.jpg" controls playsinline preload="metadata"></video>
-    <button id="playBtn" class="play-overlay" onclick="playMama()">▶ VOIR L'HISTOIRE DE 23 ANS</button>
-  </div>
-  <div class="about-content">
-    <h2>23 ANS D'EXPÉRIENCE<br><span>ESPAGNE → GABON</span></h2>
-    <p>Formée en Espagne pendant 15 ans, de retour à Libreville pour offrir un service de luxe afro.<br><br>
-    <strong>Spécialiste:</strong> Tresses, Cornrows, Fulani, Knotless<br>
-    <strong>21k followers</strong> sur @reinadeebano<br>
-    <strong>Extensions incluses</strong> • Au salon uniquement<br><br>
-    <em>"Je suis revenue au Gabon pour offrir le luxe que j'ai appris en Espagne."</em></p>
-    <div class="about-badges"><span>• Produits naturels</span><span>• Sans douleur</span><span>• Ambiance luxe</span></div>
-    <button class="btn-gold small" style="margin-top:18px" onclick="playMama()">▶ ÉCOUTER SON HISTOIRE</button>
-  </div>
-</section>
-
-<section class="cta-bande"><h2>AGENDA TU CITA</h2><p>Au salon à Libreville 08h-19h</p><a class="btn-gold small" onclick="openModal()">RÉSERVER MAINTENANT</a></section>
-
-<section class="section-insta" id="galerie">
-  <div class="section-title"><h2>GALERIE INSTAGRAM</h2><p>@reinadeebano • 21k • Feed en vivo de tu mamá</p></div>
-  <div class="insta-grid" style="grid-template-columns:1fr; max-width:540px; margin:28px auto 0;">
-    <div class="insta-card" style="height:740px; background:#fff; padding:0; border-radius:14px; overflow:hidden; border:1px solid rgba(0,0,0,0.1);">
-      <iframe src="https://www.instagram.com/reinadeebano/embed/" 
-        width="100%" height="740" frameborder="0" scrolling="no" 
-        allowtransparency="true" 
-        style="width:100%!important; height:740px; border:none; background:#fff; display:block;">
-      </iframe>
-    </div>
-  </div>
-  <script async src="https://www.instagram.com/embed.js"></script>
-  <div style="text-align:center;margin-top:18px">
-    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="btn-gold small">VOIR SUR INSTAGRAM 📸</a>
-  </div>
-</section>
-
-<footer class="footer"><div><h4>REINA | EBANO</h4><p>Libreville - Au salon</p></div><div class="footer-col center"><h4>CONTACT</h4><p>IG @reinadeebano</p></div><div class="footer-col right"><h4>HORAIRE</h4><p>Lun-Sam 08h-19h</p></div></footer>
+<nav class="navbar"><div class="logo">REINA <span>| EBANO</span></div><div class="nav-links"><a href="#accueil">Accueil</a><span class="dot">•</span><a href="#services">Services</a></div><a class="btn-gold" onclick="openModal()">RÉSERVER</a></nav>
+<section class="hero" id="accueil"><div class="hero-content"><h1>ART EN TRESSES.<br><span class="gold-text">LUXE DANS CHAQUE DÉTAIL</span></h1><p><strong>23 ans d'expérience - Formée en Espagne.</strong><br>3 clientes par jour max. 4h par service.</p><div class="hero-btns"><a class="btn-gold" onclick="openModal()">RÉSERVER CITA</a></div></div><div class="hero-img"><img src="reinahero.jpg" alt="Reina Hero"></div></section>
+<section class="section-services" id="services"><div class="section-title"><h2>SERVICIOS EXCLUSIVOS</h2><p>4 heures par cliente - Repos inclus</p></div><div class="services-grid" id="servicesGrid"></div></section>
+<section class="cta-bande"><h2>AGENDA TU CITA</h2><p>08h00 - 20h30 • 3 clientes max/jour</p><a class="btn-gold small" onclick="openModal()">RÉSERVER MAINTENANT</a></section>
+<footer class="footer"><div><h4>REINA | EBANO</h4><p>Libreville - Au salon</p></div><div class="footer-col center"><h4>CONTACT</h4><p>IG @reinadeebano</p></div><div class="footer-col right"><h4>HORAIRE</h4><p>08h-20h30</p></div></footer>
 
 <div class="modal" id="modal"><div class="modal-box">
-  <div class="modal-head"><h3>Réserver</h3><span class="close" onclick="closeModal()">×</span></div>
-  <div class="field"><label>Service</label><select id="selService"></select></div>
-  <div class="field"><label>Couleur</label><div class="variants" id="selColors">
-    <div class="variant-dot active" onclick="selectColor(this,'Noir 1B')"><img src="noir.jpg"></div>
-    <div class="variant-dot" onclick="selectColor(this,'Châtain 4')"><img src="chatain.jpg"></div>
-    <div class="variant-dot" onclick="selectColor(this,'Miel')"><img src="miel.jpg"></div>
-    <div class="variant-dot" onclick="selectColor(this,'Bordeaux')"><img src="bordeaux.jpg"></div>
-    <div class="variant-dot" onclick="selectColor(this,'Blanc')"><img src="blanc.jpg"></div>
-    <div class="variant-dot" onclick="selectColor(this,'Rouge')"><img src="rouge.jpg"></div>
-  </div><small id="colorName" class="color-name">Noir 1B</small></div>
+  <div class="modal-head"><h3>Réserver - 4h de service</h3><span class="close" onclick="closeModal()">×</span></div>
+  <div class="field"><label>Service (4h)</label><select id="selService"></select></div>
   <div class="field two"><div><label>Date</label><input type="date" id="selDate"></div><div><label>Nom</label><input type="text" id="selName" placeholder="Grâce"></div></div>
-  <div class="field"><label>Heure</label><div id="selTimes" class="times"></div></div>
-  <div class="nota">🔒 5.000F Airtel Money 74 83 37 42 + capture WhatsApp obligatoire.</div>
+  <div class="field"><label>Heure - 3 créneaux seulement</label><div id="selTimes" class="times"></div><small style="opacity:0.6">08:00-12:00 | 12:30-16:30 | 17:00-21:00 (4h chaque)</small></div>
+  <div class="nota">🔒 Max 3 clientes/jour. Réservation bloquée pour toutes dès validation. 5.000F Airtel Money 74 83 37 42</div>
   <button class="btn-gold full" onclick="sendWhatsApp()">RÉSERVER SUR WHATSAPP 📱</button>
 </div></div>
 
 <script>
-const WHATSAPP_NUM="24162516457"; const AIRTEL_NUM="+241 74 83 37 42";
+const WHATSAPP_NUM="24162516457"; 
+const AIRTEL_NUM="+241 74 83 37 42";
 const SHEET_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/export?format=csv";
-// --- NUEVO: HOJA DE RESERVAS ---
-const RESERVAS_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/gviz/tq?tqx=out:csv&sheet=Reservas";
-const SCRIPT_URL="PON_AQUI_TU_URL_DE_APPS_SCRIPT"; // <- si no tienes, déjalo así, igual bloquea local
-let selectedColor="Noir 1B",selectedTime=null, HORAIRE_GLOBAL="08h-19h";
-let reservasBloqueadas = []; // [{date: '2026-05-14', time:'10:00'}]
-
+const SCRIPT_URL="https://script.google.com/macros/s/TU_URL_AQUI/exec"; // PEGA AQUI TU /exec
+const SLOTS_JOUR = [
+  {time:"08:00", label:"08:00 - 12:00", fin:"12:00"},
+  {time:"12:30", label:"12:30 - 16:30", fin:"16:30"},
+  {time:"17:00", label:"17:00 - 21:00", fin:"21:00"}
+];
+let selectedColor="Noir 1B",selectedTime=null, HORAIRE_GLOBAL="08h-20h30";
+let reservasBloqueadas = [];
 const dateInput=document.getElementById('selDate');
 dateInput.min=new Date().toISOString().split('T')[0];
-dateInput.max=new Date(Date.now()+30*24*3600*1000).toISOString().split('T')[0];
+dateInput.max=new Date(Date.now()+60*24*3600*1000).toISOString().split('T')[0];
 dateInput.value=dateInput.min;
 
-function playMama(){const v=document.getElementById('videoMama');const b=document.getElementById('playBtn');if(v){v.play();b.style.display='none';}}
-function initCarousels(){document.querySelectorAll('.carousel').forEach(car=>{const track=car.querySelector('.carousel-track');const dotsBox=car.querySelector('.car-dots');if(!track||!dotsBox) return;dotsBox.innerHTML='';[...track.children].forEach((_,i)=>{const dot=document.createElement('span');dot.className='car-dot'+(i===0?' active':'');dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};dotsBox.appendChild(dot);});car.dataset.index=0;updateCarousel(car);});}
-function updateCarousel(car){const idx=parseInt(car.dataset.index||0);car.querySelector('.carousel-track').style.transform=`translateX(-${idx*100}%)`;car.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
-function moveSlide(btn,dir){const car=btn.closest('.carousel');const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;let idx=parseInt(car.dataset.index||0)+dir;if(idx<0) idx=total-1;if(idx>=total) idx=0;car.dataset.index=idx;updateCarousel(car);}
+function isBloqueado(date,time){ return reservasBloqueadas.some(r=> String(r.date).trim()===String(date).trim() && String(r.time).trim()===String(time).trim()); }
+function countReservasDate(date){ return reservasBloqueadas.filter(r=> String(r.date).trim()===String(date).trim()).length; }
 
-// --- NUEVO: GESTION BLOQUEO ---
-function loadLocalBloqueos(){
-  try{ const l=localStorage.getItem('reina_bloqueados_v1'); if(l) reservasBloqueadas = reservasBloqueadas.concat(JSON.parse(l)); }catch(e){}
-}
-function saveLocalBloqueo(date,time){
-  const key='reina_bloqueados_v1'; let arr=[]; try{ arr=JSON.parse(localStorage.getItem(key)||'[]'); }catch(e){} arr.push({date,time}); localStorage.setItem(key, JSON.stringify(arr));
-}
-function isBloqueado(date,time){
-  return reservasBloqueadas.some(r=> r.date===date && r.time===time);
-}
 async function loadReservasBloqueadas(){
-  loadLocalBloqueos();
   try{
-    const res=await fetch(RESERVAS_CSV); if(!res.ok) throw "no reservas"; const txt=await res.text();
-    const lines=txt.split(/\r?\n/).filter(l=>l.trim()!=''); if(lines.length<2) throw "vacia";
-    const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim().toLowerCase());
-    const iDate=headers.findIndex(h=>h.includes('date')); const iTime=headers.findIndex(h=>h.includes('time')||h.includes('heure')||h.includes('hora'));
-    for(let k=1;k<lines.length;k++){
-      const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
-      if(iDate>-1 && iTime>-1){ const d=cols[iDate]; const t=cols[iTime]; if(d&&t){ reservasBloqueadas.push({date:d, time:t}); } }
+    if(SCRIPT_URL.includes("TU_URL")){
+      const r=await fetch(`https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/gviz/tq?tqx=out:csv&sheet=Reservas`);
+      const txt=await r.text(); const lines=txt.split(/\r?\n/).filter(l=>l.trim()!=''); 
+      if(lines.length>1){
+        const h=lines[0].toLowerCase(); const iD=h.split(',').findIndex(x=>x.includes('date')); const iT=h.split(',').findIndex(x=>x.includes('time'));
+        for(let i=1;i<lines.length;i++){ const c=lines[i].split(','); if(c[iD]&&c[iT]) reservasBloqueadas.push({date:c[iD].replace(/"/g,''), time:c[iT].replace(/"/g,'')}); }
+      }
+    } else {
+      const res=await fetch(SCRIPT_URL); const json=await res.json(); reservasBloqueadas=json;
     }
-  }catch(e){ console.log("Reservas sheet no cargó, uso localStorage",e); }
+  }catch(e){ console.log("fallback local",e); }
   renderTimes();
 }
 
 function renderTimes(){
-  const c=document.getElementById('selTimes'); if(!c) return; c.innerHTML=""; 
-  let start=8,end=19; 
-  if(HORAIRE_GLOBAL.toUpperCase().includes('FERMÉ')){c.innerHTML="<small style='opacity:0.6'>Fermé - Contacte WhatsApp</small>";return;}
-  const m=HORAIRE_GLOBAL.match(/(\d+).*?(\d+)/); if(m){start=parseInt(m[1]);end=parseInt(m[2]);}
-  const selectedDate = document.getElementById('selDate').value;
-  for(let h=start;h<end;h++){for(let mm of[0,30]){
-    const l=`${String(h).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
-    const bloqueado = isBloqueado(selectedDate,l);
+  const c=document.getElementById('selTimes'); if(!c) return; c.innerHTML="";
+  const selectedDate = dateInput.value;
+  const count = countReservasDate(selectedDate);
+  if(count>=3){ c.innerHTML="<div class='complet-msg'>🔒 Journée complète - 3 clientes max atteintes pour cette date</div>"; return; }
+  SLOTS_JOUR.forEach(slot=>{
+    const bloqueado=isBloqueado(selectedDate, slot.time);
     if(bloqueado){
-      c.innerHTML+=`<button class="time-btn bloqueado" disabled> ${l} 🔒</button>`;
-    }else{
-      c.innerHTML+=`<button class="time-btn" onclick="selectTime(this,'${l}')">${l}</button>`;
+      c.innerHTML+=`<button class="time-btn bloqueado" disabled>${slot.time} 🔒 Réservé</button>`;
+    } else {
+      c.innerHTML+=`<button class="time-btn libre" onclick="selectTime(this,'${slot.time}')"><span>${slot.time}</span><small>${slot.label} (4h)</small></button>`;
     }
-  }}
+  });
 }
-function selectTime(el,l){
-  const selDate=document.getElementById('selDate').value;
-  if(isBloqueado(selDate,l)) return;
-  document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active'); selectedTime=l;
-}
-function selectColor(el,name){document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active'));el.classList.add('active');selectedColor=name;document.getElementById('colorName').innerText=name;}
-function openModal(i=0){const sel=document.getElementById('selService');if(sel&&sel.options[i]) sel.selectedIndex=i;renderTimes();document.getElementById('modal').classList.add('active');}
-function closeModal(){document.getElementById('modal').classList.remove('active');}
+function selectTime(el,l){ if(isBloqueado(dateInput.value,l)) return; document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); selectedTime=l; }
+function openModal(i=0){ const sel=document.getElementById('selService'); if(sel&&sel.options[i]) sel.selectedIndex=i; renderTimes(); document.getElementById('modal').classList.add('active'); }
+function closeModal(){ document.getElementById('modal').classList.remove('active'); }
+function selectColor(el,name){ document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active')); el.classList.add('active'); selectedColor=name; document.getElementById('colorName').innerText=name; }
 
-function sendWhatsApp(){
-  const s=document.getElementById('selService').value;
-  const d=document.getElementById('selDate').value;
-  const n=document.getElementById('selName').value||"Cliente";
-  if(!selectedTime){alert("Choisis heure");return;}
-  if(isBloqueado(d,selectedTime)){ alert("Ce créneau est déjà réservé 🔒 Choisis un autre"); renderTimes(); return; }
-  // BLOQUEA PARA SIEMPRE
+async function sendWhatsApp(){
+  const s=document.getElementById('selService').value; const d=dateInput.value; const n=document.getElementById('selName').value||"Cliente";
+  if(!selectedTime){ alert("Choisis heure"); return; }
+  if(isBloqueado(d,selectedTime)){ alert("Ce créneau est déjà pris 🔒"); renderTimes(); return; }
+  if(countReservasDate(d)>=3){ alert("Cette journée est déjà complète (3 clientes)"); return; }
   reservasBloqueadas.push({date:d,time:selectedTime});
-  saveLocalBloqueo(d,selectedTime);
-  // Intenta guardar en Google Sheet (si tienes Apps Script)
-  try{
-    if(SCRIPT_URL && !SCRIPT_URL.includes("PON_AQUI")){
-      fetch(SCRIPT_URL, {method:'POST', mode:'no-cors', body: JSON.stringify({Date:d, Time:selectedTime, Service:s, Nom:n, Telephone:WHATSAPP_NUM, Couleur:selectedColor})});
-    }
-  }catch(e){console.log(e)}
-  const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime}%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;
+  // Guarda en Sheet para que lo vean TODAS las clientas
+  if(!SCRIPT_URL.includes("TU_URL")){
+    fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({Date:d,Time:selectedTime,Service:s,Nom:n,Telephone:WHATSAPP_NUM,Couleur:selectedColor})});
+  }
+  const msg=`Bonjour Reina 👑%0AService (4h): ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime} (4h)%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM}`;
   renderTimes();
   window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
+  closeModal();
 }
-
-function getCol(headers,names){for(let n of names){const idx=headers.findIndex(h=>h.toLowerCase().includes(n));if(idx>-1) return idx;}return -1;}
 async function loadFromSheet(){
-  const grid=document.querySelector('.services-grid'); const selService=document.getElementById('selService'); const annonceBar=document.getElementById('annonceBar'); const colorsBox=document.getElementById('selColors');
+  const grid=document.getElementById('servicesGrid'); const selService=document.getElementById('selService');
   try{
-    const res=await fetch(SHEET_CSV); const text=await res.text(); const lines=text.split(/\r?\n/).filter(l=>l.trim()!=''); if(lines.length<2) throw "vacio";
-    const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim().toLowerCase());
-    const iS=getCol(headers,['service']); const iD=getCol(headers,['description','desc']); const iP=getCol(headers,['price','prix']); const iPh=getCol(headers,['photo']); const iIn=getCol(headers,['inclus']); const iCo=getCol(headers,['couleur','color']); const iAn=getCol(headers,['annonce','promo']); const iHo=getCol(headers,['horaire','horario']); const iAc=getCol(headers,['active']);
-    let annonceText=""; let allColors=new Set(); let hasSheetData=false;
-    const tempRows=[];
+    const res=await fetch(SHEET_CSV); const text=await res.text(); const lines=text.split(/\r?\n/).filter(l=>l.trim()!=''); 
+    if(lines.length<2) throw "vacio"; const headers=lines[0].toLowerCase().split(','); const iS=headers.findIndex(h=>h.includes('service')); const iD=headers.findIndex(h=>h.includes('desc')); const iP=headers.findIndex(h=>h.includes('price')||h.includes('prix')); const iPh=headers.findIndex(h=>h.includes('photo'));
+    grid.innerHTML=''; selService.innerHTML='';
     for(let k=1;k<lines.length;k++){
-      const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
-      if(cols.length<3) continue; const active=iAc>-1?cols[iAc]:"TRUE"; if(active.toLowerCase()==='false') continue;
-      const service=cols[iS]||""; if(!service) continue; tempRows.push(cols);
+      const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim()); const service=cols[iS]; if(!service) continue;
+      const price=cols[iP]||""; const photo=cols[iPh]||"img1.jpeg";
+      grid.innerHTML+=`<div class="service-card"><div class="carousel"><img src="${photo.split(';')[0]}" style="width:100%;height:340px;object-fit:contain"></div><div class="service-body"><h3>${service.toUpperCase()} - 4H</h3><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${k-1})">Réserver (4h) →</button></div></div>`;
+      const opt=document.createElement('option'); opt.value=`${service} - ${price}F (4h)`; opt.textContent=`${service} - ${price}F`; selService.appendChild(opt);
     }
-    if(tempRows.length>0){grid.innerHTML=''; selService.innerHTML=''; hasSheetData=true;}
-    tempRows.forEach((cols,serviceIdx)=>{
-      const service=cols[iS]||""; const desc=cols[iD]||""; const price=cols[iP]||""; const photo_url=cols[iPh]||""; const inclus=cols[iIn]||"Extensions incluses"; const couleurs=cols[iCo]||""; const annonce=cols[iAn]||""; const horaire=cols[iHo]||"08h-19h";
-      if(annonce &&!annonceText) annonceText=annonce; if(horaire) HORAIRE_GLOBAL=horaire;
-      const files=photo_url.split(';').map(s=>s.trim()).filter(Boolean);
-      const trackHtml=files.map(f=>/\.(mp4|mov|webm)$/i.test(f)?`<video src="${f}" autoplay muted loop playsinline preload="metadata"></video>`:`<img src="${f}" alt="${service}" loading="lazy" onerror="this.style.display='none'">`).join('')||`<img src="img1.jpeg">`;
-      grid.innerHTML+=`<div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track">${trackHtml}</div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>${service.toUpperCase()}</h3><p>${desc}</p><span class="badge-inclus">${inclus}</span><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${serviceIdx})">Más info →</button></div></div>`;
-      const opt=document.createElement('option'); opt.value=`${service} - ${price}F`; opt.textContent=`${service} - ${price}F`; selService.appendChild(opt);
-      if(couleurs){couleurs.split(';').forEach(c=>{if(c.trim()) allColors.add(c.trim());});}
-    });
-    if(annonceText && annonceBar){const parts=annonceText.split('|'); const txt=parts[0]; const img=parts[1]||""; annonceBar.innerHTML=img?`<span style="display:flex;align-items:center;justify-content:center;gap:10px"><img src="${img.trim()}" style="width:32px;height:32px;border-radius:6px;object-fit:cover"> ${txt}</span>`:txt; annonceBar.classList.add('active');}
-    if(colorsBox && allColors.size>0){colorsBox.innerHTML='';[...allColors].forEach((c,i)=>{const [name,foto]=c.split(':').map(s=>s.trim()); const imgTag=foto?`<img src="${foto}">`:`<div style="width:100%;height:100%;background:#2B1B12"></div>`; colorsBox.innerHTML+=`<div class="variant-dot ${i===0?'active':''}" onclick="selectColor(this,'${name||c}')">${imgTag}</div>`;}); document.getElementById('colorName').innerText=[...allColors][0].split(':')[0]; selectedColor=[...allColors][0].split(':')[0];}
-    if(hasSheetData){renderTimes(); initCarousels();}
-  }catch(e){console.log("Sheet no cargó, usando fallback estático",e); renderTimes(); initCarousels();}
+  }catch(e){ grid.innerHTML="<p>Services: Tresses, Cornrows, Fulani - 4h cada uno</p>"; }
 }
 dateInput.addEventListener('change', ()=>{ selectedTime=null; renderTimes(); });
-renderTimes(); initCarousels(); loadFromSheet(); loadReservasBloqueadas();
+loadFromSheet(); loadReservasBloqueadas();
 </script>
 </body>
 </html>
