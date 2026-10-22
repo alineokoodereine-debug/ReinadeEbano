@@ -3,51 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reina de Ebano | Salon Afro Libreville - 3 clientes max</title>
+<title>Reina de Ebano | Salon Afro Libreville - 23 ans Espagne</title>
+<meta name="description" content="Salon afro luxe Libreville. 23 ans d'expérience Espagne. Tresses, Cornrows, Fulani, Knotless. Extensions incluses. 21k @reinadeebano">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="annonceBar" class="annonce-bar"></div>
-<nav class="navbar"><div class="logo">REINA <span>| EBANO</span></div><div class="nav-links"><a href="#accueil">Accueil</a><span class="dot">•</span><a href="#services">Services</a></div><a class="btn-gold" onclick="openModal()">RÉSERVER</a></nav>
+<nav class="navbar">
+  <div class="logo">REINA <span>| EBANO</span></div>
+  <div class="nav-links"><a href="#accueil">Accueil</a><span class="dot">•</span><a href="#services">Services</a><span class="dot">•</span><a href="#apropos">À propos</a><span class="dot">•</span><a href="#galerie">Galerie</a></div>
+  <a class="btn-gold" onclick="openModal()">RÉSERVER</a>
+</nav>
 
-<section class="hero" id="accueil"><div class="hero-content"><h1>ART EN TRESSES.<br><span class="gold-text">LUXE DANS CHAQUE DÉTAIL</span></h1><p><strong>23 ans d'expérience - Formée en Espagne.</strong><br>3 clientes par jour max • 4h par service • 08h-20h30</p><div class="hero-btns"><a class="btn-gold" onclick="openModal()">RÉSERVER CITA</a></div></div><div class="hero-img"><img src="reinahero.jpg" alt="Reina Hero"></div></section>
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <h1>ART EN TRESSES.<br><span class="gold-text">LUXE DANS CHAQUE DÉTAIL</span></h1>
+    <p><strong>23 ans d'expérience - Formée en Espagne.</strong><br>Salon afro haut de gamme Libreville. 21k @reinadeebano - Extensions incluses.</p>
+    <div class="hero-btns"><a class="btn-gold" onclick="openModal()">RÉSERVER CITA</a><a class="btn-outline" href="#services">VOIR SERVICES</a></div>
+  </div>
+  <div class="hero-img"><img src="reinahero.jpg" alt="Reina Hero" loading="eager"></div>
+</section>
 
-<section class="section-services" id="services"><div class="section-title"><h2>SERVICIOS EXCLUSIVOS</h2><p>4 heures par cliente - Repos inclus</p></div><div class="services-grid" id="servicesGrid"></div></section>
+<section class="section-services" id="services">
+  <div class="section-title"><h2>SERVICIOS EXCLUSIVOS</h2><p>Desliza para ver más fotos del mismo servicio - 4h par cliente</p></div>
+  <div class="services-grid"></div>
+</section>
 
-<section class="cta-bande"><h2>AGENDA TU CITA</h2><p>08h00 - 20h30 • 3 clientes max/jour • 4h par service</p><a class="btn-gold small" onclick="openModal()">RÉSERVER MAINTENANT</a></section>
+<section class="about" id="apropos">
+  <div class="about-img">
+    <video id="videoMama" src="moi-video.mp4" poster="moi.jpg" controls playsinline preload="metadata"></video>
+    <button id="playBtn" class="play-overlay" onclick="playMama()">▶️ VOIR L'HISTOIRE DE 23 ANS</button>
+  </div>
+  <div class="about-content">
+    <h2>23 ANS D'EXPÉRIENCE<br><span>ESPAGNE → GABON</span></h2>
+    <p>Formée en Espagne pendant 15 ans, de retour à Libreville pour offrir un service de luxe afro.<br><br>
+    <strong>Spécialiste:</strong> Tresses, Cornrows, Fulani, Knotless<br>
+    <strong>21k followers</strong> sur @reinadeebano<br>
+    <strong>Extensions incluses</strong> • Au salon uniquement<br><br>
+    <em>"Je suis revenue au Gabon pour offrir le luxe que j'ai appris en Espagne."</em></p>
+    <div class="about-badges"><span>• Produits naturels</span><span>• Sans douleur</span><span>• Ambiance luxe</span></div>
+    <button class="btn-gold small" style="margin-top:18px" onclick="playMama()">▶️ ÉCOUTER SON HISTOIRE</button>
+  </div>
+</section>
 
-<footer class="footer"><div><h4>REINA | EBANO</h4><p>Libreville - Au salon</p></div><div class="footer-col center"><h4>CONTACT</h4><p>IG @reinadeebano</p></div><div class="footer-col right"><h4>HORAIRE</h4><p>08h-20h30 • 3 clientes max</p></div></footer>
+<section class="cta-bande"><h2>AGENDA TU CITA</h2><p>Au salon à Libreville 08h00 - 20h30 • 3 clientes max • 4h par service</p><a class="btn-gold small" onclick="openModal()">RÉSERVER MAINTENANT</a></section>
+
+<section class="section-insta" id="galerie">
+  <div class="section-title"><h2>GALERIE INSTAGRAM</h2><p>@reinadeebano • 21k - Cliquez pour voir</p></div>
+  <div class="insta-grid">
+    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="insta-card"><img src="img1.jpeg" alt="Reina"><div class="insta-overlay">❤️ @reinadeebano</div></a>
+    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="insta-card"><img src="img2.jpeg" alt="Reina"><div class="insta-overlay">✨ Tresses</div></a>
+    <a href="https://www.instagram.com/reinadeebano/" target="_blank" class="insta-card"><img src="img3.jpeg" alt="Reina"><div class="insta-overlay">👑 Luxe</div></a>
+  </div>
+  <div style="text-align:center;margin-top:20px"><a href="https://www.instagram.com/reinadeebano/" target="_blank" class="btn-gold small">VOIR SUR INSTAGRAM 📸</a></div>
+</section>
+
+<footer class="footer">
+  <div><h4>REINA | EBANO</h4><p>Libreville - Au salon<br>23 ans Espagne → Gabon</p></div>
+  <div class="footer-col center"><h4>CONTACT</h4><p>WhatsApp +241 62 51 64 57<br><a href="https://www.instagram.com/reinadeebano/" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:700">IG @reinadeebano • 21k 📸</a></p></div>
+  <div class="footer-col right"><h4>HORAIRE</h4><p>Lun-Sam 08h00 - 20h30<br>3 clientes max / jour<br>4h par service</p></div>
+</footer>
 
 <div class="modal" id="modal"><div class="modal-box">
-  <div class="modal-head"><h3>Réserver - 4h de service</h3><span class="close" onclick="closeModal()">×</span></div>
+  <div class="modal-head"><h3>Réserver - 4h</h3><span class="close" onclick="closeModal()">×</span></div>
   <div class="field"><label>Service (4h)</label><select id="selService"></select></div>
+  <div class="field"><label>Couleur</label><div class="variants" id="selColors">
+    <div class="variant-dot active" onclick="selectColor(this,'Noir 1B')"><img src="noir.jpg"></div>
+    <div class="variant-dot" onclick="selectColor(this,'Châtain 4')"><img src="chatain.jpg"></div>
+    <div class="variant-dot" onclick="selectColor(this,'Miel')"><img src="miel.jpg"></div>
+    <div class="variant-dot" onclick="selectColor(this,'Bordeaux')"><img src="bordeaux.jpg"></div>
+    <div class="variant-dot" onclick="selectColor(this,'Blanc')"><img src="blanc.jpg"></div>
+    <div class="variant-dot" onclick="selectColor(this,'Rouge')"><img src="rouge.jpg"></div>
+  </div><small id="colorName" class="color-name">Noir 1B</small></div>
   <div class="field two"><div><label>Date</label><input type="date" id="selDate"></div><div><label>Nom</label><input type="text" id="selName" placeholder="Grâce"></div></div>
-  <div class="field"><label>Heure - 3 créneaux seulement</label><div id="selTimes" class="times"></div><small style="opacity:0.6">08:00-12:00 | 12:30-16:30 | 17:00-21:00 (4h chaque)</small></div>
-  <div class="nota">🔒 Max 3 clientes/jour. Si une cliente réserve le 5 Oct 08:00, toutes les autres verront 08:00 🔒 en gris. 5.000F Airtel Money 74 83 37 42</div>
+  <div class="field"><label>Heure - 3 créneaux seulement (4h chaque)</label><div id="selTimes" class="times"></div><small style="opacity:0.6">08:00-12:00 | 12:30-16:30 | 17:00-21:00</small></div>
+  <div class="nota">🔒 Max 3 clientes/jour. Réservation bloquée pour toutes dès validation.<br>5.000F Airtel Money 74 83 37 42 + capture obligatoire.</div>
   <button class="btn-gold full" onclick="sendWhatsApp()">RÉSERVER SUR WHATSAPP 📱</button>
 </div></div>
 
 <script>
-const WHATSAPP_NUM="24162516457"; 
+const WHATSAPP_NUM="24162516457";
 const AIRTEL_NUM="+241 74 83 37 42";
 const SHEET_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/export?format=csv";
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbw_KiTftLnnXqstqmLtmOxF022cJWv7snCk7tXldNIMtNdLVvF4I8glzgG6Ik0LHe7_gw/exec";
+
 const SLOTS_JOUR = [
   {time:"08:00", label:"08:00 - 12:00"},
   {time:"12:30", label:"12:30 - 16:30"},
   {time:"17:00", label:"17:00 - 21:00"}
 ];
-let selectedTime=null;
+
+let selectedColor="Noir 1B",selectedTime=null, HORAIRE_GLOBAL="08h-20h30";
 let reservasBloqueadas = [];
 const dateInput=document.getElementById('selDate');
 dateInput.min=new Date().toISOString().split('T')[0];
 dateInput.max=new Date(Date.now()+60*24*3600*1000).toISOString().split('T')[0];
 dateInput.value=dateInput.min;
 
+function playMama(){const v=document.getElementById('videoMama');const b=document.getElementById('playBtn');if(v){v.play();b.style.display='none';}}
+function initCarousels(){document.querySelectorAll('.carousel').forEach(car=>{const track=car.querySelector('.carousel-track');const dotsBox=car.querySelector('.car-dots');if(!track||!dotsBox) return;dotsBox.innerHTML='';[...track.children].forEach((_,i)=>{const dot=document.createElement('span');dot.className='car-dot'+(i===0?' active':'');dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};dotsBox.appendChild(dot);});car.dataset.index=0;updateCarousel(car);});}
+function updateCarousel(car){const idx=parseInt(car.dataset.index||0);car.querySelector('.carousel-track').style.transform=`translateX(-${idx*100}%)`;car.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
+function moveSlide(btn,dir){const car=btn.closest('.carousel');const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;let idx=parseInt(car.dataset.index||0)+dir;if(idx<0) idx=total-1;if(idx>=total) idx=0;car.dataset.index=idx;updateCarousel(car);}
+
 function normalizeDate(d){ return String(d).split('T')[0].trim(); }
 function normalizeTime(t){ return String(t).trim().substring(0,5); }
-
 function isBloqueado(date,time){
   const d=normalizeDate(date), t=normalizeTime(time);
   return reservasBloqueadas.some(r=> normalizeDate(r.date)===d && normalizeTime(r.time)===t);
@@ -63,91 +123,91 @@ async function loadReservasBloqueadas(){
     const json=await res.json();
     reservasBloqueadas = json.map(o=>({date: normalizeDate(o.date), time: normalizeTime(o.time)}));
   }catch(e){
-    console.log("No se pudo con /exec, probando CSV fallback",e);
+    console.log("Fallo /exec, usando fallback CSV",e);
     try{
       const r=await fetch(`https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/gviz/tq?tqx=out:csv&sheet=Reservas`);
-      const txt=await r.text(); 
-      const lines=txt.split(/\r?\n/).filter(l=>l.trim()!=''); 
+      const txt=await r.text(); const lines=txt.split(/\r?\n/).filter(l=>l.trim()!='');
       reservasBloqueadas=[];
       for(let i=1;i<lines.length;i++){
-        const cols=lines[i].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
-        if(cols[0]&&cols[1]) reservasBloqueadas.push({date: normalizeDate(cols[0]), time: normalizeTime(cols[1])});
+        const c=lines[i].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(x=>x.replace(/^"|"$/g,'').trim());
+        if(c[0]&&c[1]) reservasBloqueadas.push({date: normalizeDate(c[0]), time: normalizeTime(c[1])});
       }
-    }catch(e2){ console.log(e2); }
+    }catch(e2){}
   }
   renderTimes();
 }
 
 function renderTimes(){
   const c=document.getElementById('selTimes'); if(!c) return; c.innerHTML="";
+  if(HORAIRE_GLOBAL.toUpperCase().includes('FERMÉ')){ c.innerHTML="<small style='opacity:0.6'>Fermé - Contacte WhatsApp</small>"; return; }
   const selectedDate = dateInput.value;
   const count = countReservasDate(selectedDate);
   if(count>=3){
-    c.innerHTML=`<div class='complet-msg'>🔒 Journée complète - 3 clientes max pour ${selectedDate}<br><small>Choisis une autre date</small></div>`;
+    c.innerHTML=`<div class='complet-msg'>🔒 Journée complète - 3 clientes max atteintes pour ${selectedDate}<br><small>Choisis une autre date</small></div>`;
     return;
   }
   SLOTS_JOUR.forEach(slot=>{
     const bloqueado=isBloqueado(selectedDate, slot.time);
     if(bloqueado){
-      c.innerHTML+=`<button class="time-btn bloqueado" disabled>${slot.time} 🔒</button>`;
-    }else{
+      c.innerHTML+=`<button class="time-btn bloqueado" disabled>${slot.time} 🔒 Réservé</button>`;
+    } else {
       c.innerHTML+=`<button class="time-btn libre" onclick="selectTime(this,'${slot.time}')"><span>${slot.time}</span><small>${slot.label} • 4h</small></button>`;
     }
   });
 }
 
-function selectTime(el,l){
-  if(isBloqueado(dateInput.value,l)) return;
-  document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-  selectedTime=l;
-}
-function openModal(i=0){
-  const sel=document.getElementById('selService'); if(sel&&sel.options[i]) sel.selectedIndex=i;
-  renderTimes(); loadReservasBloqueadas();
-  document.getElementById('modal').classList.add('active');
-}
+function selectTime(el,l){ if(isBloqueado(dateInput.value,l)) return; document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); selectedTime=l; }
+function selectColor(el,name){ document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active')); el.classList.add('active'); selectedColor=name; document.getElementById('colorName').innerText=name; }
+function openModal(i=0){ const sel=document.getElementById('selService'); if(sel&&sel.options[i]) sel.selectedIndex=i; renderTimes(); loadReservasBloqueadas(); document.getElementById('modal').classList.add('active'); }
 function closeModal(){ document.getElementById('modal').classList.remove('active'); }
 
-async function sendWhatsApp(){
+function sendWhatsApp(){
   const s=document.getElementById('selService').value;
-  const d=dateInput.value;
+  const d=document.getElementById('selDate').value;
   const n=document.getElementById('selName').value||"Cliente";
   if(!selectedTime){ alert("Choisis une heure"); return; }
   if(isBloqueado(d,selectedTime)){ alert("Ce créneau est déjà pris 🔒"); renderTimes(); return; }
   if(countReservasDate(d)>=3){ alert("Cette journée est déjà complète (3 clientes)"); return; }
 
   reservasBloqueadas.push({date:d,time:selectedTime});
-  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({Date:d,Time:selectedTime,Service:s,Nom:n,Telephone:WHATSAPP_NUM})});
+  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({Date:d,Time:selectedTime,Service:s,Nom:n,Telephone:WHATSAPP_NUM,Couleur:selectedColor})});
 
-  const msg=`Bonjour Reina 👑%0AService (4h): ${s}%0ADate: ${d}%0AHeure: ${selectedTime} (4h)%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;
+  const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime} (4h)%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;
   renderTimes();
   window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
   closeModal();
 }
 
+function getCol(headers,names){for(let n of names){const idx=headers.findIndex(h=>h.toLowerCase().includes(n));if(idx>-1) return idx;}return -1;}
 async function loadFromSheet(){
-  const grid=document.getElementById('servicesGrid'); const selService=document.getElementById('selService');
+  const grid=document.querySelector('.services-grid'); const selService=document.getElementById('selService'); const annonceBar=document.getElementById('annonceBar'); const colorsBox=document.getElementById('selColors');
   try{
-    const res=await fetch(SHEET_CSV); const text=await res.text(); const lines=text.split(/\r?\n/).filter(l=>l.trim()!=''); 
-    if(lines.length<2) throw "vacio";
-    const headers=lines[0].toLowerCase().split(',');
-    const iS=headers.findIndex(h=>h.includes('service')); const iP=headers.findIndex(h=>h.includes('price')||h.includes('prix')); const iPh=headers.findIndex(h=>h.includes('photo'));
-    grid.innerHTML=''; selService.innerHTML='';
+    const res=await fetch(SHEET_CSV); const text=await res.text(); const lines=text.split(/\r?\n/).filter(l=>l.trim()!=''); if(lines.length<2) throw "vacio";
+    const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim().toLowerCase());
+    const iS=getCol(headers,['service']); const iD=getCol(headers,['description','desc']); const iP=getCol(headers,['price','prix']); const iPh=getCol(headers,['photo']); const iIn=getCol(headers,['inclus']); const iCo=getCol(headers,['couleur','color']); const iAn=getCol(headers,['annonce','promo']); const iHo=getCol(headers,['horaire','horario']); const iAc=getCol(headers,['active']);
+    let annonceText=""; let allColors=new Set(); let tempRows=[];
     for(let k=1;k<lines.length;k++){
       const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
-      const service=cols[iS]; if(!service) continue;
-      const price=cols[iP]||""; const photo=(cols[iPh]||"img1.jpeg").split(';')[0];
-      grid.innerHTML+=`<div class="service-card"><div style="height:340px;background:#FFFCF6"><img src="${photo}" style="width:100%;height:340px;object-fit:contain"></div><div class="service-body"><h3>${service.toUpperCase()} - 4H</h3><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${k-1})">Réserver 4h →</button></div></div>`;
-      const opt=document.createElement('option'); opt.value=`${service} - ${price}F (4h)`; opt.textContent=`${service} - ${price}F`; selService.appendChild(opt);
+      if(cols.length<3) continue; const active=iAc>-1?cols[iAc]:"TRUE"; if(active.toLowerCase()==='false') continue;
+      const service=cols[iS]||""; if(!service) continue; tempRows.push(cols);
     }
-  }catch(e){
-    console.log(e);
-    grid.innerHTML=''; selService.innerHTML='<option>Tresses Africaines - 35000F (4h)</option><option>Cornrows - 25000F (4h)</option><option>Fulani - 40000F (4h)</option>';
-  }
+    if(tempRows.length>0){grid.innerHTML=''; selService.innerHTML='';}
+    tempRows.forEach((cols,idx)=>{
+      const service=cols[iS]||""; const desc=cols[iD]||""; const price=cols[iP]||""; const photo_url=cols[iPh]||""; const inclus=cols[iIn]||"Extensions incluses"; const couleurs=cols[iCo]||""; const annonce=cols[iAn]||""; const horaire=cols[iHo]||"08h-20h30";
+      if(annonce &&!annonceText) annonceText=annonce; if(horaire) HORAIRE_GLOBAL=horaire;
+      const files=photo_url.split(';').map(s=>s.trim()).filter(Boolean);
+      const trackHtml=files.map(f=>/\.(mp4|mov|webm)$/i.test(f)?`<video src="${f}" autoplay muted loop playsinline preload="metadata"></video>`:`<img src="${f}" alt="${service}" loading="lazy" onerror="this.style.display='none'">`).join('')||`<img src="img1.jpeg">`;
+      grid.innerHTML+=`<div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track">${trackHtml}</div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>${service.toUpperCase()}</h3><p>${desc}</p><span class="badge-inclus">${inclus}</span><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${idx})">Más info →</button></div></div>`;
+      const opt=document.createElement('option'); opt.value=`${service} - ${price}F`; opt.textContent=`${service} - ${price}F`; selService.appendChild(opt);
+      if(couleurs){couleurs.split(';').forEach(c=>{if(c.trim()) allColors.add(c.trim());});}
+    });
+    if(annonceText && annonceBar){const parts=annonceText.split('|'); const txt=parts[0]; const img=parts[1]||""; annonceBar.innerHTML=img?`<span style="display:flex;align-items:center;justify-content:center;gap:10px"><img src="${img.trim()}" style="width:32px;height:32px;border-radius:6px;object-fit:cover"> ${txt}</span>`:txt; annonceBar.classList.add('active');}
+    if(colorsBox && allColors.size>0){colorsBox.innerHTML='';[...allColors].forEach((c,i)=>{const [name,foto]=c.split(':').map(s=>s.trim()); const imgTag=foto?`<img src="${foto}">`:`<div style="width:100%;height:100%;background:#2B1B12"></div>`; colorsBox.innerHTML+=`<div class="variant-dot ${i===0?'active':''}" onclick="selectColor(this,'${name||c}')">${imgTag}</div>`;}); document.getElementById('colorName').innerText=[...allColors][0].split(':')[0]; selectedColor=[...allColors][0].split(':')[0];}
+    renderTimes(); initCarousels(); loadReservasBloqueadas();
+  }catch(e){console.log("Sheet no cargó, fallback",e); renderTimes(); initCarousels(); loadReservasBloqueadas();}
 }
+renderTimes(); initCarousels(); loadFromSheet();
 dateInput.addEventListener('change', ()=>{ selectedTime=null; renderTimes(); loadReservasBloqueadas(); });
-loadFromSheet(); loadReservasBloqueadas();
 </script>
 </body>
 </html>
