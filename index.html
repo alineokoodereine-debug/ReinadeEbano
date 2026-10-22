@@ -51,15 +51,11 @@
 
 <section class="section-insta" id="galerie">
   <div class="section-title"><h2>GALERIE INSTAGRAM</h2><p>@reinadeebano • 21k - Feed réel</p></div>
-  
-  <!-- FEED REAL INSTAGRAM - Se actualiza solo con lo que sube tu mamá -->
   <div style="max-width:900px;margin:20px auto">
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <div class="elfsight-app-5f2e9e2e-7e3a-4c1a-bb2a-123456789" data-elfsight-app-lazy></div>
-    <!-- Si no quieres Elfsight, usa este iframe temporal que SI muestra su perfil real -->
     <iframe src="https://www.instagram.com/reinadeebano/embed" width="100%" height="600" frameborder="0" scrolling="no" style="background:#fff;border-radius:14px;border:1px solid rgba(201,168,106,0.2)"></iframe>
   </div>
-
   <div style="text-align:center;margin-top:20px"><a href="https://www.instagram.com/reinadeebano/" target="_blank" class="btn-gold small">VOIR SUR INSTAGRAM 📸 @reinadeebano</a></div>
 </section>
 
@@ -91,14 +87,8 @@ const WHATSAPP_NUM="24162516457";
 const AIRTEL_NUM="+241 74 83 37 42";
 const SHEET_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/export?format=csv";
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbw_KiTftLnnXqstqmLtmOxF022cJWv7snCk7tXldNIMtNdLVvF4I8glzgG6Ik0LHe7_gw/exec";
-
-const SLOTS_JOUR = [
-  {time:"08:00", label:"08:00 - 12:00"},
-  {time:"12:30", label:"12:30 - 16:30"},
-  {time:"17:00", label:"17:00 - 21:00"}
-];
-
-let selectedColor="Noir 1B",selectedTime=null, HORAIRE_GLOBAL="08h-20h30";
+const SLOTS_JOUR = [{time:"08:00",label:"08:00 - 12:00"},{time:"12:30",label:"12:30 - 16:30"},{time:"17:00",label:"17:00 - 21:00"}];
+let selectedColor="Noir 1B",selectedTime=null,HORAIRE_GLOBAL="08h-20h30";
 let reservasBloqueadas = [];
 const dateInput=document.getElementById('selDate');
 dateInput.min=new Date().toISOString().split('T')[0];
@@ -106,112 +96,81 @@ dateInput.max=new Date(Date.now()+60*24*3600*1000).toISOString().split('T')[0];
 dateInput.value=dateInput.min;
 
 function playMama(){const v=document.getElementById('videoMama');const b=document.getElementById('playBtn');if(v){v.play();b.style.display='none';}}
-function initCarousels(){document.querySelectorAll('.carousel').forEach(car=>{const track=car.querySelector('.carousel-track');const dotsBox=car.querySelector('.car-dots');if(!track||!dotsBox) return;dotsBox.innerHTML='';[...track.children].forEach((_,i)=>{const dot=document.createElement('span');dot.className='car-dot'+(i===0?' active':'');dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};dotsBox.appendChild(dot);});car.dataset.index=0;updateCarousel(car);});}
+function initCarousels(){document.querySelectorAll('.carousel').forEach(car=>{const track=car.querySelector('.carousel-track');const dotsBox=car.querySelector('.car-dots');if(!track||!dotsBox)return;dotsBox.innerHTML='';[...track.children].forEach((_,i)=>{const dot=document.createElement('span');dot.className='car-dot'+(i===0?' active':'');dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};dotsBox.appendChild(dot);});car.dataset.index=0;updateCarousel(car);});}
 function updateCarousel(car){const idx=parseInt(car.dataset.index||0);car.querySelector('.carousel-track').style.transform=`translateX(-${idx*100}%)`;car.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
-function moveSlide(btn,dir){const car=btn.closest('.carousel');const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;let idx=parseInt(car.dataset.index||0)+dir;if(idx<0) idx=total-1;if(idx>=total) idx=0;car.dataset.index=idx;updateCarousel(car);}
+function moveSlide(btn,dir){const car=btn.closest('.carousel');const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;let idx=parseInt(car.dataset.index||0)+dir;if(idx<0)idx=total-1;if(idx>=total)idx=0;car.dataset.index=idx;updateCarousel(car);}
 
-function normalizeDate(d){ return String(d).split('T')[0].trim(); }
-function normalizeTime(t){ return String(t).trim().substring(0,5); }
+// FIX BLOQUEO COMPARTIDO - NO SE REACTIVA
+function getLocalBlocks(){try{return JSON.parse(localStorage.getItem('reina_bloqueos')||'[]');}catch{return[];}}
+function saveLocalBlock(d,t){let arr=getLocalBlocks();arr.push({date:d,time:t});localStorage.setItem('reina_bloqueos',JSON.stringify(arr));}
+function normalizeDate(d){return String(d).split('T')[0].trim();}
+function normalizeTime(t){return String(t).trim().substring(0,5);}
 function isBloqueado(date,time){
   const d=normalizeDate(date), t=normalizeTime(time);
-  return reservasBloqueadas.some(r=> normalizeDate(r.date)===d && normalizeTime(r.time)===t);
+  const todos=[...reservasBloqueadas, ...getLocalBlocks()];
+  return todos.some(r=> normalizeDate(r.date)===d && normalizeTime(r.time)===t);
 }
 function countReservasDate(date){
   const d=normalizeDate(date);
-  return reservasBloqueadas.filter(r=> normalizeDate(r.date)===d).length;
+  const todos=[...reservasBloqueadas, ...getLocalBlocks()];
+  return todos.filter(r=> normalizeDate(r.date)===d).length;
 }
-
 async function loadReservasBloqueadas(){
   try{
-    const res=await fetch(SCRIPT_URL);
+    const res=await fetch(SCRIPT_URL+"?t="+Date.now(), {cache:"no-store"});
     const json=await res.json();
-    reservasBloqueadas = json.map(o=>({date: normalizeDate(o.date), time: normalizeTime(o.time)}));
-  }catch(e){
-    console.log("Fallo /exec, usando fallback CSV",e);
-    try{
-      const r=await fetch(`https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/gviz/tq?tqx=out:csv&sheet=Reservas`);
-      const txt=await r.text(); const lines=txt.split(/\r?\n/).filter(l=>l.trim()!='');
-      reservasBloqueadas=[];
-      for(let i=1;i<lines.length;i++){
-        const c=lines[i].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(x=>x.replace(/^"|"$/g,'').trim());
-        if(c[0]&&c[1]) reservasBloqueadas.push({date: normalizeDate(c[0]), time: normalizeTime(c[1])});
-      }
-    }catch(e2){}
-  }
+    reservasBloqueadas=json.map(o=>({date:normalizeDate(o.date), time:normalizeTime(o.time)}));
+  }catch(e){console.log("Fallo fetch",e);}
   renderTimes();
 }
-
 function renderTimes(){
   const c=document.getElementById('selTimes'); if(!c) return; c.innerHTML="";
-  if(HORAIRE_GLOBAL.toUpperCase().includes('FERMÉ')){ c.innerHTML="<small style='opacity:0.6'>Fermé - Contacte WhatsApp</small>"; return; }
-  const selectedDate = dateInput.value;
-  const count = countReservasDate(selectedDate);
-  if(count>=3){
-    c.innerHTML=`<div class='complet-msg'>🔒 Journée complète - 3 clientes max atteintes pour ${selectedDate}<br><small>Choisis une autre date</small></div>`;
-    return;
-  }
+  if(HORAIRE_GLOBAL.toUpperCase().includes('FERMÉ')){c.innerHTML="<small style='opacity:0.6'>Fermé - Contacte WhatsApp</small>";return;}
+  const count=countReservasDate(dateInput.value);
+  if(count>=3){c.innerHTML=`<div class='complet-msg'>🔒 Journée complète - 3 clientes max pour ${dateInput.value}<br><small>Choisis une autre date</small></div>`;return;}
   SLOTS_JOUR.forEach(slot=>{
-    const bloqueado=isBloqueado(selectedDate, slot.time);
-    if(bloqueado){
-      c.innerHTML+=`<button class="time-btn bloqueado" disabled>${slot.time} 🔒 Réservé</button>`;
-    } else {
-      c.innerHTML+=`<button class="time-btn libre" onclick="selectTime(this,'${slot.time}')"><span>${slot.time}</span><small>${slot.label} • 4h</small></button>`;
-    }
+    const bloqueado=isBloqueado(dateInput.value, slot.time);
+    if(bloqueado){c.innerHTML+=`<button class="time-btn bloqueado" disabled>${slot.time} 🔒 Réservé</button>`;}
+    else{c.innerHTML+=`<button class="time-btn libre" onclick="selectTime(this,'${slot.time}')"><span>${slot.time}</span><small>${slot.label} • 4h</small></button>`;}
   });
 }
-
-function selectTime(el,l){ if(isBloqueado(dateInput.value,l)) return; document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); selectedTime=l; }
-function selectColor(el,name){ document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active')); el.classList.add('active'); selectedColor=name; document.getElementById('colorName').innerText=name; }
-function openModal(i=0){ const sel=document.getElementById('selService'); if(sel&&sel.options[i]) sel.selectedIndex=i; renderTimes(); loadReservasBloqueadas(); document.getElementById('modal').classList.add('active'); }
-function closeModal(){ document.getElementById('modal').classList.remove('active'); }
-
+function selectTime(el,l){if(isBloqueado(dateInput.value,l))return;document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedTime=l;}
+function selectColor(el,name){document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active'));el.classList.add('active');selectedColor=name;document.getElementById('colorName').innerText=name;}
+function openModal(i=0){const sel=document.getElementById('selService');if(sel&&sel.options[i])sel.selectedIndex=i;renderTimes();loadReservasBloqueadas();document.getElementById('modal').classList.add('active');}
+function closeModal(){document.getElementById('modal').classList.remove('active');}
 function sendWhatsApp(){
   const s=document.getElementById('selService').value;
-  const d=document.getElementById('selDate').value;
+  const d=dateInput.value;
   const n=document.getElementById('selName').value||"Cliente";
-  if(!selectedTime){ alert("Choisis une heure"); return; }
-  if(isBloqueado(d,selectedTime)){ alert("Ce créneau est déjà pris 🔒"); renderTimes(); return; }
-  if(countReservasDate(d)>=3){ alert("Cette journée est déjà complète (3 clientes)"); return; }
+  if(!selectedTime){alert("Choisis une heure");return;}
+  if(isBloqueado(d,selectedTime)){alert("Ce créneau est déjà pris 🔒");renderTimes();return;}
+  if(countReservasDate(d)>=3){alert("Cette journée est déjà complète (3 clientes)");return;}
 
+  saveLocalBlock(d,selectedTime);
   reservasBloqueadas.push({date:d,time:selectedTime});
-  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({Date:d,Time:selectedTime,Service:s,Nom:n,Telephone:WHATSAPP_NUM,Couleur:selectedColor})});
 
-  const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime} (4h)%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM} + capture.`;
+  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({Date:d,Time:selectedTime,Service:s,Nom:n,Tellephone:WHATSAPP_NUM,Couleur:selectedColor})});
+
+  const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime} (4h)%0ANom: ${n}%0A%0AAcompte 5000F sur ${AIRTEL_NUM}`;
   renderTimes();
   window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
   closeModal();
+  setTimeout(()=>loadReservasBloqueadas(), 3500);
 }
-
-function getCol(headers,names){for(let n of names){const idx=headers.findIndex(h=>h.toLowerCase().includes(n));if(idx>-1) return idx;}return -1;}
+function getCol(headers,names){for(let n of names){const idx=headers.findIndex(h=>h.toLowerCase().includes(n));if(idx>-1)return idx;}return -1;}
 async function loadFromSheet(){
-  const grid=document.querySelector('.services-grid'); const selService=document.getElementById('selService'); const annonceBar=document.getElementById('annonceBar'); const colorsBox=document.getElementById('selColors');
+  const grid=document.querySelector('.services-grid');const selService=document.getElementById('selService');const annonceBar=document.getElementById('annonceBar');const colorsBox=document.getElementById('selColors');
   try{
-    const res=await fetch(SHEET_CSV); const text=await res.text(); const lines=text.split(/\r?\n/).filter(l=>l.trim()!=''); if(lines.length<2) throw "vacio";
+    const res=await fetch(SHEET_CSV);const text=await res.text();const lines=text.split(/\r?\n/).filter(l=>l.trim()!='');if(lines.length<2)throw "vacio";
     const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim().toLowerCase());
-    const iS=getCol(headers,['service']); const iD=getCol(headers,['description','desc']); const iP=getCol(headers,['price','prix']); const iPh=getCol(headers,['photo']); const iIn=getCol(headers,['inclus']); const iCo=getCol(headers,['couleur','color']); const iAn=getCol(headers,['annonce','promo']); const iHo=getCol(headers,['horaire','horario']); const iAc=getCol(headers,['active']);
-    let annonceText=""; let allColors=new Set(); let tempRows=[];
-    for(let k=1;k<lines.length;k++){
-      const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());
-      if(cols.length<3) continue; const active=iAc>-1?cols[iAc]:"TRUE"; if(active.toLowerCase()==='false') continue;
-      const service=cols[iS]||""; if(!service) continue; tempRows.push(cols);
-    }
-    if(tempRows.length>0){grid.innerHTML=''; selService.innerHTML='';}
-    tempRows.forEach((cols,idx)=>{
-      const service=cols[iS]||""; const desc=cols[iD]||""; const price=cols[iP]||""; const photo_url=cols[iPh]||""; const inclus=cols[iIn]||"Extensions incluses"; const couleurs=cols[iCo]||""; const annonce=cols[iAn]||""; const horaire=cols[iHo]||"08h-20h30";
-      if(annonce &&!annonceText) annonceText=annonce; if(horaire) HORAIRE_GLOBAL=horaire;
-      const files=photo_url.split(';').map(s=>s.trim()).filter(Boolean);
-      const trackHtml=files.map(f=>/\.(mp4|mov|webm)$/i.test(f)?`<video src="${f}" autoplay muted loop playsinline preload="metadata"></video>`:`<img src="${f}" alt="${service}" loading="lazy" onerror="this.style.display='none'">`).join('')||`<img src="img1.jpeg">`;
-      grid.innerHTML+=`<div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track">${trackHtml}</div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>${service.toUpperCase()}</h3><p>${desc}</p><span class="badge-inclus">${inclus}</span><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${idx})">Más info →</button></div></div>`;
-      const opt=document.createElement('option'); opt.value=`${service} - ${price}F`; opt.textContent=`${service} - ${price}F`; selService.appendChild(opt);
-      if(couleurs){couleurs.split(';').forEach(c=>{if(c.trim()) allColors.add(c.trim());});}
-    });
-    if(annonceText && annonceBar){const parts=annonceText.split('|'); const txt=parts[0]; const img=parts[1]||""; annonceBar.innerHTML=img?`<span style="display:flex;align-items:center;justify-content:center;gap:10px"><img src="${img.trim()}" style="width:32px;height:32px;border-radius:6px;object-fit:cover"> ${txt}</span>`:txt; annonceBar.classList.add('active');}
-    if(colorsBox && allColors.size>0){colorsBox.innerHTML='';[...allColors].forEach((c,i)=>{const [name,foto]=c.split(':').map(s=>s.trim()); const imgTag=foto?`<img src="${foto}">`:`<div style="width:100%;height:100%;background:#2B1B12"></div>`; colorsBox.innerHTML+=`<div class="variant-dot ${i===0?'active':''}" onclick="selectColor(this,'${name||c}')">${imgTag}</div>`;}); document.getElementById('colorName').innerText=[...allColors][0].split(':')[0]; selectedColor=[...allColors][0].split(':')[0];}
-    renderTimes(); initCarousels(); loadReservasBloqueadas();
-  }catch(e){console.log("Sheet no cargó, fallback",e); renderTimes(); initCarousels(); loadReservasBloqueadas();}
+    const iS=getCol(headers,['service']);const iD=getCol(headers,['description','desc']);const iP=getCol(headers,['price','prix']);const iPh=getCol(headers,['photo']);const iIn=getCol(headers,['inclus']);const iCo=getCol(headers,['couleur','color']);const iAn=getCol(headers,['annonce','promo']);const iHo=getCol(headers,['horaire','horario']);const iAc=getCol(headers,['active']);
+    let annonceText="";let allColors=new Set();let tempRows=[];
+    for(let k=1;k<lines.length;k++){const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());if(cols.length<3)continue;const active=iAc>-1?cols[iAc]:"TRUE";if(active.toLowerCase()==='false')continue;if(!cols[iS])continue;tempRows.push(cols);}
+    if(tempRows.length>0){grid.innerHTML='';selService.innerHTML='';}
+    tempRows.forEach((cols,idx)=>{const service=cols[iS]||"";const desc=cols[iD]||"";const price=cols[iP]||"";const photo_url=cols[iPh]||"";const inclus=cols[iIn]||"Extensions incluses";const couleurs=cols[iCo]||"";const annonce=cols[iAn]||"";const horaire=cols[iHo]||"08h-20h30";if(annonce&&!annonceText)annonceText=annonce;if(horaire)HORAIRE_GLOBAL=horaire;const files=photo_url.split(';').map(s=>s.trim()).filter(Boolean);const trackHtml=files.map(f=>/\.(mp4|mov|webm)$/i.test(f)?`<video src="${f}" autoplay muted loop playsinline preload="metadata"></video>`:`<img src="${f}" alt="${service}" loading="lazy">`).join('')||`<img src="img1.jpeg">`;grid.innerHTML+=`<div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track">${trackHtml}</div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>${service.toUpperCase()}</h3><p>${desc}</p><span class="badge-inclus">${inclus}</span><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${idx})">Más info →</button></div></div>`;const opt=document.createElement('option');opt.value=`${service} - ${price}F`;opt.textContent=`${service} - ${price}F`;selService.appendChild(opt);if(couleurs){couleurs.split(';').forEach(c=>{if(c.trim())allColors.add(c.trim());});}});if(annonceText&&annonceBar){annonceBar.innerHTML=annonceText;annonceBar.classList.add('active');}if(colorsBox&&allColors.size>0){colorsBox.innerHTML='';[...allColors].forEach((c,i)=>{const [name,foto]=c.split(':').map(s=>s.trim());const imgTag=foto?`<img src="${foto}">`:`<div style="width:100%;height:100%;background:#2B1B12"></div>`;colorsBox.innerHTML+=`<div class="variant-dot ${i===0?'active':''}" onclick="selectColor(this,'${name||c}')">${imgTag}</div>`;});}renderTimes();initCarousels();loadReservasBloqueadas();}catch(e){renderTimes();initCarousels();loadReservasBloqueadas();}
 }
-renderTimes(); initCarousels(); loadFromSheet();
-dateInput.addEventListener('change', ()=>{ selectedTime=null; renderTimes(); loadReservasBloqueadas(); });
+renderTimes();initCarousels();loadFromSheet();
+dateInput.addEventListener('change',()=>{selectedTime=null;renderTimes();loadReservasBloqueadas();});
 </script>
 </body>
 </html>
