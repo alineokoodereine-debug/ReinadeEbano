@@ -9,181 +9,879 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div id="annonceBar" class="annonce-bar"></div>
+
 <nav class="navbar">
- <div class="logo">REINA <span>| EBANO</span></div>
- <div class="nav-links"><a href="#accueil">Accueil</a><span class="dot">•</span><a href="#services">Services</a><span class="dot">•</span><a href="#apropos">À propos</a><span class="dot">•</span><a href="#galerie">Galerie</a></div>
- <a class="btn-gold" onclick="openModal()">RÉSERVER</a>
+  <div class="logo">REINA <span>| EBANO</span></div>
+  <div class="nav-links">
+    <a href="#accueil">Accueil</a><span class="dot">•</span>
+    <a href="#services">Services</a><span class="dot">•</span>
+    <a href="#apropos">À propos</a><span class="dot">•</span>
+    <a href="#galerie">Galerie</a>
+  </div>
+  <a class="btn-gold" href="#" onclick="openModal();return false;">RÉSERVER</a>
 </nav>
+
 <section class="hero" id="accueil">
- <div class="hero-content">
- <h1>ART EN TRESSES.<br><span class="gold-text">LUXE DANS CHAQUE DÉTAIL</span></h1>
- <p><strong>23 ans d'expérience - Formée en Espagne.</strong><br>Salon afro haut de gamme Libreville. 21k @reinadeebano - Extensions incluses.</p>
- <div class="hero-btns"><a class="btn-gold" onclick="openModal()">RÉSERVER CITA</a><a class="btn-outline" href="#services">VOIR SERVICES</a></div>
- </div>
- <div class="hero-img"><img src="reinahero.jpg" alt="Reina Hero" loading="eager"></div>
+  <div class="hero-content">
+    <h1>ART EN TRESSES.<br><span class="gold-text">LUXE DANS CHAQUE DÉTAIL</span></h1>
+    <p><strong>23 ans d'expérience - Formée en Espagne.</strong><br>Salon afro haut de gamme Libreville. 21k @reinadeebano - Extensions incluses.</p>
+    <div class="hero-btns">
+      <a class="btn-gold" href="#" onclick="openModal();return false;">RÉSERVER CITA</a>
+      <a class="btn-outline" href="#services">VOIR SERVICES</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="reinahero.jpg" alt="Reina Hero" loading="eager">
+  </div>
 </section>
+
 <section class="section-services" id="services">
- <div class="section-title"><h2>SERVICIOS EXCLUSIVOS</h2><p>Desliza para ver más fotos del mismo servicio - 4h par cliente</p></div>
- <div class="services-grid"></div>
+  <div class="section-title">
+    <h2>SERVICIOS EXCLUSIVOS</h2>
+    <p>Desliza para ver más fotos del mismo servicio - 4h par cliente</p>
+  </div>
+  <div class="services-grid"></div>
 </section>
+
 <section class="about" id="apropos">
- <div class="about-img">
- <video id="videoMama" src="moi-video.mp4" poster="moi.jpg" controls playsinline preload="metadata"></video>
- <button id="playBtn" class="play-overlay" onclick="playMama()">▶️ VOIR L'HISTOIRE DE 23 ANS</button>
- </div>
- <div class="about-content">
- <h2>23 ANS D'EXPÉRIENCE<br><span>ESPAGNE → GABON</span></h2>
- <p>Formée en Espagne pendant 15 ans, de retour à Libreville pour offrir un service de luxe afro.<br><br><strong>Spécialiste:</strong> Tresses, Cornrows, Fulani, Knotless<br><strong>21k followers</strong> sur @reinadeebano<br><strong>Extensions incluses</strong> • Au salon uniquement<br><br><em>"Je suis revenue au Gabon pour offrir le luxe que j'ai appris en Espagne."</em></p>
- <div class="about-badges"><span>• Produits naturels</span><span>• Sans douleur</span><span>• Ambiance luxe</span></div>
- <button class="btn-gold small" style="margin-top:18px" onclick="playMama()">▶️ ÉCOUTER SON HISTOIRE</button>
- </div>
+  <div class="about-img">
+    <video id="videoMama" src="moi-video.mp4" poster="moi.jpg" controls playsinline preload="metadata"></video>
+    <button id="playBtn" class="play-overlay" onclick="playMama()">▶️ VOIR L'HISTOIRE DE 23 ANS</button>
+  </div>
+  <div class="about-content">
+    <h2>23 ANS D'EXPÉRIENCE<br><span>ESPAGNE → GABON</span></h2>
+    <p>Formée en Espagne pendant 15 ans, de retour à Libreville pour offrir un service de luxe afro.<br><br><strong>Spécialiste:</strong> Tresses, Cornrows, Fulani, Knotless<br><strong>21k followers</strong> sur @reinadeebano<br><strong>Extensions incluses</strong> • Au salon uniquement<br><br><em>"Je suis revenue au Gabon pour offrir le luxe que j'ai appris en Espagne."</em></p>
+    <div class="about-badges">
+      <span>• Produits naturels</span>
+      <span>• Sans douleur</span>
+      <span>• Ambiance luxe</span>
+    </div>
+    <button class="btn-gold small" style="margin-top:18px" onclick="playMama()">▶️ ÉCOUTER SON HISTOIRE</button>
+  </div>
 </section>
-<section class="cta-bande"><h2>AGENDA TU CITA</h2><p>Au salon à Libreville 08h00 - 20h30 • 3 clientes max • 4h par service</p><a class="btn-gold small" onclick="openModal()">RÉSERVER MAINTENANT</a></section>
+
+<section class="cta-bande">
+  <h2>AGENDA TU CITA</h2>
+  <p>Au salon à Libreville 08h00 - 20h30 • 3 clientes max • 4h par service</p>
+  <a class="btn-gold small" href="#" onclick="openModal();return false;">RÉSERVER MAINTENANT</a>
+</section>
+
 <section class="section-insta" id="galerie">
- <div class="section-title"><h2>GALERIE INSTAGRAM</h2><p>@reinadeebano • 21k - Feed réel</p></div>
- <div style="max-width:900px;margin:20px auto">
- <script src="https://static.elfsight.com/platform/platform.js" async></script>
- <div class="elfsight-app-----123456789" data-elfsight-app-lazy></div>
- <iframe src="https://www.instagram.com/reinadeebano/embed" width="100%" height="600" frameborder="0" scrolling="no" style="background:#fff;border-radius:14px;border:1px solid rgba(201,168,106,0.2)"></iframe>
- </div>
- <div style="text-align:center;margin-top:20px"><a href="https://www.instagram.com/reinadeebano/" target="_blank" class="btn-gold small">VOIR SUR INSTAGRAM 📸 @reinadeebano</a></div>
+  <div class="section-title">
+    <h2>GALERIE INSTAGRAM</h2>
+    <p>@reinadeebano • 21k - Feed réel</p>
+  </div>
+  <div style="max-width:900px;margin:20px auto">
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-----123456789" data-elfsight-app-lazy></div>
+    <iframe src="https://www.instagram.com/reinadeebano/embed" width="100%" height="600" frameborder="0" scrolling="no" style="background:#fff;border-radius:14px;border:1px solid rgba(201,168,106,0.2)"></iframe>
+  </div>
+  <div style="text-align:center;margin-top:20px">
+    <a href="https://www.instagram.com/reinadeebano/" target="_blank" rel="noopener noreferrer" class="btn-gold small">VOIR SUR INSTAGRAM 📸 @reinadeebano</a>
+  </div>
 </section>
+
 <footer class="footer">
- <div><h4>REINA | EBANO</h4><p>Libreville - Au salon<br>23 ans Espagne → Gabon</p></div>
- <div class="footer-col center"><h4>CONTACT</h4><p>WhatsApp +241 62 51 64 57<br><a href="https://www.instagram.com/reinadeebano/" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:700">IG @reinadeebano • 21k 📸</a></p></div>
- <div class="footer-col right"><h4>HORAIRE</h4><p>Lun-Sam 08h00 - 20h30<br>3 clientes max / jour<br>4h par service</p></div>
+  <div>
+    <h4>REINA | EBANO</h4>
+    <p>Libreville - Au salon<br>23 ans Espagne → Gabon</p>
+  </div>
+  <div class="footer-col center">
+    <h4>CONTACT</h4>
+    <p>WhatsApp +241 62 51 64 57<br>
+    <a href="https://www.instagram.com/reinadeebano/" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none;font-weight:700">IG @reinadeebano • 21k 📸</a></p>
+  </div>
+  <div class="footer-col right">
+    <h4>HORAIRE</h4>
+    <p>Lun-Sam 08h00 - 20h30<br>3 clientes max / jour<br>4h par service</p>
+  </div>
 </footer>
-<div class="modal" id="modal"><div class="modal-box">
- <div class="modal-head"><h3>Réserver - 4h</h3><span class="close" onclick="closeModal()">×</span></div>
- <div class="field"><label>Service (4h)</label><select id="selService"></select></div>
- <div class="field"><label>Couleur</label><div class="variants" id="selColors">
- <div class="variant-dot active" onclick="selectColor(this,'Noir 1B')"><img src="noir.jpg"></div>
- <div class="variant-dot" onclick="selectColor(this,'Châtain 4')"><img src="chatain.jpg"></div>
- <div class="variant-dot" onclick="selectColor(this,'Miel')"><img src="miel.jpg"></div>
- <div class="variant-dot" onclick="selectColor(this,'Bordeaux')"><img src="bordeaux.jpg"></div>
- <div class="variant-dot" onclick="selectColor(this,'Blanc')"><img src="blanc.jpg"></div>
- <div class="variant-dot" onclick="selectColor(this,'Rouge')"><img src="rouge.jpg"></div>
- </div><small id="colorName" class="color-name">Noir 1B</small></div>
- <div class="field two"><div><label>Date</label><input type="date" id="selDate"></div><div><label>Nom</label><input type="text" id="selName" placeholder="Grâce"></div></div>
- <div class="field"><label>Heure - 3 créneaux seulement (4h chaque)</label><div id="selTimes" class="times"></div><small style="opacity:0.6">08:00-12:00 | 12:30-16:30 | 17:00-21:00</small></div>
- <div class="nota">🔒 Max 3 clientes/jour. Réservation bloquée pour toutes dès validation.<br>5.000F Airtel Money 74 83 37 42 + capture obligatoire.</div>
- <button class="btn-gold full" onclick="sendWhatsApp()">RÉSERVER SUR WHATSAPP 📱</button>
-</div></div>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Réserver - 4h</h3>
+      <span class="close" onclick="closeModal()">×</span>
+    </div>
+
+    <div class="field">
+      <label>Service (4h)</label>
+      <select id="selService"></select>
+    </div>
+
+    <div class="field">
+      <label>Couleur</label>
+      <div class="variants" id="selColors">
+        <div class="variant-dot active" onclick="selectColor(this,'Noir 1B')"><img src="noir.jpg" alt="Noir 1B"></div>
+        <div class="variant-dot" onclick="selectColor(this,'Châtain 4')"><img src="chatain.jpg" alt="Châtain 4"></div>
+        <div class="variant-dot" onclick="selectColor(this,'Miel')"><img src="miel.jpg" alt="Miel"></div>
+        <div class="variant-dot" onclick="selectColor(this,'Bordeaux')"><img src="bordeaux.jpg" alt="Bordeaux"></div>
+        <div class="variant-dot" onclick="selectColor(this,'Blanc')"><img src="blanc.jpg" alt="Blanc"></div>
+        <div class="variant-dot" onclick="selectColor(this,'Rouge')"><img src="rouge.jpg" alt="Rouge"></div>
+      </div>
+      <small id="colorName" class="color-name">Noir 1B</small>
+    </div>
+
+    <div class="field two">
+      <div>
+        <label>Date</label>
+        <input type="date" id="selDate">
+      </div>
+      <div>
+        <label>Nom</label>
+        <input type="text" id="selName" placeholder="Grâce" autocomplete="name" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Heure - 3 créneaux seulement (4h chaque)</label>
+      <div id="selTimes" class="times"></div>
+      <small style="opacity:0.6">08:00-12:00 | 12:30-16:30 | 17:00-21:00</small>
+    </div>
+
+    <div class="nota">
+      🔒 Max 3 clientes/jour. Les créneaux sont vérifiés dans le calendrier partagé.<br>
+      5.000F Airtel Money 74 83 37 42 + capture obligatoire.
+    </div>
+
+    <button id="reserveBtn" class="btn-gold full" onclick="sendWhatsApp()">RÉSERVER SUR WHATSAPP 📱</button>
+    <p id="reservationStatus" role="status" aria-live="polite" style="font-size:12px;margin-top:10px"></p>
+  </div>
+</div>
+
 <script>
-const WHATSAPP_NUM="24162516457";
-const AIRTEL_NUM="+241 74 83 37 42";
-const SHEET_CSV="https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/export?format=csv";
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbw_KiTftLnnXqstqmLtmOxF022cJWv7snCk7tXldNIMtNdLVvF4I8glzgG6Ik0LHe7_gw/exec";
-const SLOTS_JOUR=[{time:"08:00",label:"08:00 - 12:00"},{time:"12:30",label:"12:30 - 16:30"},{time:"17:00",label:"17:00 - 21:00"}];
-let selectedColor="Noir 1B",selectedTime=null,HORAIRE_GLOBAL="08h-20h30",reservasBloqueadas=[];
-const dateInput=document.getElementById('selDate');
-dateInput.min=new Date().toISOString().split('T')[0];
-dateInput.max=new Date(Date.now()+60*24*3600*1000).toISOString().split('T')[0];
-dateInput.value=dateInput.min;
-function playMama(){const v=document.getElementById('videoMama');const b=document.getElementById('playBtn');if(v){v.play();b.style.display='none';}}
-function initCarousels(){document.querySelectorAll('.carousel').forEach(car=>{const track=car.querySelector('.carousel-track');const dotsBox=car.querySelector('.car-dots');if(!track||!dotsBox)return;dotsBox.innerHTML='';[...track.children].forEach((_,i)=>{const dot=document.createElement('span');dot.className='car-dot'+(i===0?' active':'');dot.onclick=()=>{car.dataset.index=i;updateCarousel(car);};dotsBox.appendChild(dot);});car.dataset.index=0;updateCarousel(car);});}
-function updateCarousel(car){const idx=parseInt(car.dataset.index||0);car.querySelector('.carousel-track').style.transform=`translateX(-${idx*100}%)`;car.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
-function moveSlide(btn,dir){const car=btn.closest('.carousel');const total=car.querySelectorAll('.carousel-track img,.carousel-track video').length;let idx=parseInt(car.dataset.index||0)+dir;if(idx<0)idx=total-1;if(idx>=total)idx=0;car.dataset.index=idx;updateCarousel(car);}
+"use strict";
 
-function getLocalBlocks(){try{return JSON.parse(localStorage.getItem('reina_bloqueos')||'[]');}catch{return[];}}
-function saveLocalBlock(d,t){let arr=getLocalBlocks();if(!arr.some(x=>x.date===d&&x.time===t)){arr.push({date:d,time:t});localStorage.setItem('reina_bloqueos',JSON.stringify(arr));}}
-function normalizeDate(d){return String(d).split('T')[0].trim();}
-function normalizeTime(t){return String(t).trim().substring(0,5);}
-function isBloqueado(date,time){
-  const d=normalizeDate(date), t=normalizeTime(time);
-  const todos=[...reservasBloqueadas, ...getLocalBlocks()];
-  return todos.some(r=> normalizeDate(r.date)===d && normalizeTime(r.time)===t);
-}
-function countReservasDate(date){
-  const d=normalizeDate(date);
-  const todos=[...reservasBloqueadas, ...getLocalBlocks()];
-  // evitar duplicados mismo date+time
-  const uniq = {};
-  todos.forEach(r=>{ const k=normalizeDate(r.date)+'_'+normalizeTime(r.time); uniq[k]=r; });
-  return Object.values(uniq).filter(r=> normalizeDate(r.date)===d).length;
-}
+const WHATSAPP_NUM = "24162516457";
+const AIRTEL_NUM = "+241 74 83 37 42";
+const SHEET_CSV = "https://docs.google.com/spreadsheets/d/1IjIYlg_-uKIYKoX9pVlajQULXQtMHGR37jUEMIuw-wg/export?format=csv";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_KiTftLnnXqstqmLtmOxF022cJWv7snCk7tXldNIMtNdLVvF4I8glzgG6Ik0LHe7_gw/exec";
 
-// FIX VPN - ANTI CACHE DE GABON
-async function loadReservasBloqueadas(){
-  try{
-    const antiCache = Date.now() + "_" + Math.random().toString(36).substring(7);
-    const url = SCRIPT_URL + "?t=" + antiCache + "&nocache=" + antiCache;
-    const res=await fetch(url,{
-      cache:"no-store",
-      headers:{"Cache-Control":"no-cache, no-store, must-revalidate","Pragma":"no-cache"}
-    });
-    const json=await res.json();
-    console.log("SHEET DATA:", json);
-    reservasBloqueadas=json.map(o=>({date:normalizeDate(o.date), time:normalizeTime(o.time)}));
-  }catch(e){console.log("Fallo fetch Sheet (VPN?)",e);}
-  renderTimes();
+const SLOTS_JOUR = [
+  {time:"08:00", label:"08:00 - 12:00"},
+  {time:"12:30", label:"12:30 - 16:30"},
+  {time:"17:00", label:"17:00 - 21:00"}
+];
+
+let selectedColor = "Noir 1B";
+let selectedTime = null;
+let HORAIRE_GLOBAL = "08h-20h30";
+let reservasBloqueadas = [];
+let bookingInProgress = false;
+let refreshTimer = null;
+
+const dateInput = document.getElementById("selDate");
+const nameInput = document.getElementById("selName");
+const reserveBtn = document.getElementById("reserveBtn");
+const statusBox = document.getElementById("reservationStatus");
+
+function fechaLocalISO(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
-function renderTimes(){
-  const c=document.getElementById('selTimes'); if(!c) return; c.innerHTML="";
-  if(HORAIRE_GLOBAL.toUpperCase().includes('FERMÉ')){c.innerHTML="<small style='opacity:0.6'>Fermé - Contacte WhatsApp</small>";return;}
-  const count=countReservasDate(dateInput.value);
-  if(count>=3){c.innerHTML=`<div class='complet-msg'>🔒 Journée complète - 3 clientes max pour ${dateInput.value}<br><small>Choisis une autre date</small></div>`;return;}
-  SLOTS_JOUR.forEach(slot=>{
-    const bloqueado=isBloqueado(dateInput.value, slot.time);
-    if(bloqueado){c.innerHTML+=`<button class="time-btn bloqueado" disabled>${slot.time} 🔒 Réservé</button>`;}
-    else{c.innerHTML+=`<button class="time-btn libre" onclick="selectTime(this,'${slot.time}')"><span>${slot.time}</span><small>${slot.label} • 4h</small></button>`;}
+dateInput.min = fechaLocalISO();
+dateInput.max = fechaLocalISO(new Date(Date.now() + 60 * 24 * 60 * 60 * 1000));
+dateInput.value = dateInput.min;
+
+function playMama() {
+  const video = document.getElementById("videoMama");
+  const button = document.getElementById("playBtn");
+
+  if (!video) return;
+
+  video.play().then(() => {
+    if (button) button.style.display = "none";
+  }).catch(() => {
+    if (button) button.style.display = "block";
   });
 }
-function selectTime(el,l){if(isBloqueado(dateInput.value,l))return;document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedTime=l;}
-function selectColor(el,name){document.querySelectorAll('.variant-dot').forEach(d=>d.classList.remove('active'));el.classList.add('active');selectedColor=name;document.getElementById('colorName').innerText=name;}
-function openModal(i=0){
-  const sel=document.getElementById('selService');if(sel&&sel.options[i])sel.selectedIndex=i;
+
+function initCarousels() {
+  document.querySelectorAll(".carousel").forEach(carousel => {
+    const track = carousel.querySelector(".carousel-track");
+    const dotsBox = carousel.querySelector(".car-dots");
+
+    if (!track || !dotsBox) return;
+
+    dotsBox.innerHTML = "";
+
+    [...track.children].forEach((_, index) => {
+      const dot = document.createElement("span");
+      dot.className = "car-dot" + (index === 0 ? " active" : "");
+      dot.setAttribute("role", "button");
+      dot.setAttribute("aria-label", `Afficher la photo ${index + 1}`);
+      dot.tabIndex = 0;
+      dot.onclick = () => {
+        carousel.dataset.index = index;
+        updateCarousel(carousel);
+      };
+      dot.onkeydown = event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          dot.click();
+        }
+      };
+      dotsBox.appendChild(dot);
+    });
+
+    carousel.dataset.index = "0";
+    updateCarousel(carousel);
+  });
+}
+
+function updateCarousel(carousel) {
+  const track = carousel.querySelector(".carousel-track");
+  if (!track) return;
+
+  const index = Number.parseInt(carousel.dataset.index || "0", 10);
+  track.style.transform = `translateX(-${index * 100}%)`;
+
+  carousel.querySelectorAll(".car-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+}
+
+function moveSlide(button, direction) {
+  const carousel = button.closest(".carousel");
+  if (!carousel) return;
+
+  const total = carousel.querySelectorAll(".carousel-track img, .carousel-track video").length;
+  if (!total) return;
+
+  let index = Number.parseInt(carousel.dataset.index || "0", 10) + direction;
+
+  if (index < 0) index = total - 1;
+  if (index >= total) index = 0;
+
+  carousel.dataset.index = String(index);
+  updateCarousel(carousel);
+}
+
+function normalizeDate(value) {
+  return String(value || "").split("T")[0].trim();
+}
+
+function normalizeTime(value) {
+  return String(value || "").trim().substring(0, 5);
+}
+
+function setStatus(message, isError = false) {
+  statusBox.textContent = message;
+  statusBox.style.color = isError ? "#A12B20" : "var(--brown-dark)";
+}
+
+function setBookingLoading(loading) {
+  bookingInProgress = loading;
+  reserveBtn.disabled = loading;
+  reserveBtn.textContent = loading ? "VÉRIFICATION EN COURS..." : "RÉSERVER SUR WHATSAPP 📱";
+}
+
+function isBloqueado(date, time) {
+  const d = normalizeDate(date);
+  const t = normalizeTime(time);
+
+  return reservasBloqueadas.some(reservation =>
+    normalizeDate(reservation.date) === d &&
+    normalizeTime(reservation.time) === t
+  );
+}
+
+function countReservasDate(date) {
+  const d = normalizeDate(date);
+  const uniqueSlots = new Set();
+
+  reservasBloqueadas.forEach(reservation => {
+    if (normalizeDate(reservation.date) === d) {
+      uniqueSlots.add(normalizeTime(reservation.time));
+    }
+  });
+
+  return uniqueSlots.size;
+}
+
+async function fetchReservas() {
+  const url = `${SCRIPT_URL}?t=${Date.now()}&nocache=${Math.random().toString(36).slice(2)}`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    cache: "no-store"
+  });
+
+  if (!response.ok) {
+    throw new Error("Impossible de vérifier les réservations.");
+  }
+
+  const data = await response.json();
+
+  if (!Array.isArray(data)) {
+    throw new Error(data.error || "Réponse inattendue du calendrier.");
+  }
+
+  return data.map(item => ({
+    date: normalizeDate(item.date),
+    time: normalizeTime(item.time),
+    token: String(item.token || "")
+  }));
+}
+
+async function loadReservasBloqueadas() {
+  try {
+    reservasBloqueadas = await fetchReservas();
+    renderTimes();
+    return true;
+  } catch (error) {
+    console.error("Erreur de lecture du calendrier :", error);
+    setStatus("Calendrier indisponible. Réessaie dans un instant.", true);
+    renderTimes();
+    return false;
+  }
+}
+
+function renderTimes() {
+  const container = document.getElementById("selTimes");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (HORAIRE_GLOBAL.toUpperCase().includes("FERMÉ")) {
+    container.innerHTML = "<small>Fermé - Contacte WhatsApp</small>";
+    selectedTime = null;
+    return;
+  }
+
+  if (countReservasDate(dateInput.value) >= 3) {
+    container.innerHTML = `
+      <div class="complet-msg">
+        🔒 Journée complète - 3 clientes max pour ${dateInput.value}
+        <br><small>Choisis une autre date</small>
+      </div>`;
+    selectedTime = null;
+    return;
+  }
+
+  SLOTS_JOUR.forEach(slot => {
+    const button = document.createElement("button");
+    button.type = "button";
+
+    if (isBloqueado(dateInput.value, slot.time)) {
+      button.className = "time-btn bloqueado";
+      button.disabled = true;
+      button.textContent = `${slot.time} 🔒 Réservé`;
+    } else {
+      button.className = "time-btn libre";
+      button.innerHTML = `<span>${slot.time}</span><small>${slot.label} • 4h</small>`;
+      button.onclick = () => selectTime(button, slot.time);
+    }
+
+    if (selectedTime === slot.time && !isBloqueado(dateInput.value, slot.time)) {
+      button.classList.add("active");
+    }
+
+    container.appendChild(button);
+  });
+}
+
+function selectTime(element, time) {
+  if (bookingInProgress) return;
+
+  if (isBloqueado(dateInput.value, time)) {
+    selectedTime = null;
+    renderTimes();
+    setStatus("Ce créneau est déjà réservé. Choisis-en un autre.", true);
+    return;
+  }
+
+  document.querySelectorAll(".time-btn").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  element.classList.add("active");
+  selectedTime = time;
+  setStatus("");
+}
+
+function selectColor(element, name) {
+  document.querySelectorAll(".variant-dot").forEach(dot => {
+    dot.classList.remove("active");
+  });
+
+  element.classList.add("active");
+  selectedColor = name;
+  document.getElementById("colorName").textContent = name;
+}
+
+function openModal(index = 0) {
+  const select = document.getElementById("selService");
+
+  if (select && select.options[index]) {
+    select.selectedIndex = index;
+  }
+
+  document.getElementById("modal").classList.add("active");
+  setStatus("");
+
+  if (refreshTimer) clearInterval(refreshTimer);
+
   loadReservasBloqueadas();
-  document.getElementById('modal').classList.add('active');
-  // refresca cada 5s mientras el modal está abierto - para VPN
-  window._intervalBloqueo = setInterval(loadReservasBloqueadas, 5000);
+  refreshTimer = setInterval(() => {
+    if (document.getElementById("modal").classList.contains("active") && !bookingInProgress) {
+      loadReservasBloqueadas();
+    }
+  }, 10000);
 }
-function closeModal(){
-  document.getElementById('modal').classList.remove('active');
-  clearInterval(window._intervalBloqueo);
+
+function closeModal() {
+  if (bookingInProgress) return;
+
+  document.getElementById("modal").classList.remove("active");
+
+  if (refreshTimer) {
+    clearInterval(refreshTimer);
+    refreshTimer = null;
+  }
 }
-function sendWhatsApp(){
- const s=document.getElementById('selService').value;
- const d=dateInput.value;
- const n=document.getElementById('selName').value||"Cliente";
- if(!selectedTime){alert("Choisis une heure");return;}
- if(isBloqueado(d,selectedTime)){alert("Ce créneau est déjà pris 🔒");renderTimes();return;}
- if(countReservasDate(d)>=3){alert("Cette journée est déjà complète (3 clientes)");return;}
- saveLocalBlock(d,selectedTime);
- reservasBloqueadas.push({date:d,time:selectedTime});
- renderTimes();
- const form=new URLSearchParams();
- form.append("Date",d);
- form.append("Time",selectedTime);
- form.append("Service",s);
- form.append("Nom",n);
- form.append("Tellephone",n);
- form.append("Couleur",selectedColor);
- // no-cors para que el VPN no lo bloquee al enviar
- fetch(SCRIPT_URL,{method:"POST",body:form,mode:"no-cors"})
-  .then(()=>console.log("Enviado a Sheet"))
-  .catch(e=>console.log("Error envio",e));
- const msg=`Bonjour Reina 👑%0AService: ${s}%0ACouleur: ${selectedColor}%0ADate: ${d}%0AHeure: ${selectedTime} (4h)%0ANom: ${n}`;
- window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
- closeModal();
- setTimeout(()=>loadReservasBloqueadas(),4000);
+
+function makeBookingToken() {
+  if (window.crypto && typeof window.crypto.randomUUID === "function") {
+    return window.crypto.randomUUID();
+  }
+
+  return "reina-" + Date.now() + "-" + Math.random().toString(36).slice(2) +
+    Math.random().toString(36).slice(2);
 }
-function getCol(headers,names){for(let n of names){const idx=headers.findIndex(h=>h.toLowerCase().includes(n));if(idx>-1)return idx;}return -1;}
-async function loadFromSheet(){
- const grid=document.querySelector('.services-grid');const selService=document.getElementById('selService');const annonceBar=document.getElementById('annonceBar');const colorsBox=document.getElementById('selColors');
- try{
- const res=await fetch(SHEET_CSV);const text=await res.text();const lines=text.split(/\r?\n/).filter(l=>l.trim()!='');if(lines.length<2)throw "vacio";
- const headers=lines[0].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(h=>h.replace(/"/g,'').trim().toLowerCase());
- const iS=getCol(headers,['service']);const iD=getCol(headers,['description','desc']);const iP=getCol(headers,['price','prix']);const iPh=getCol(headers,['photo']);const iIn=getCol(headers,['inclus']);const iCo=getCol(headers,['couleur','color']);const iAn=getCol(headers,['annonce','promo']);const iHo=getCol(headers,['horaire','horario']);const iAc=getCol(headers,['active']);
- let annonceText="",allColors=new Set(),tempRows=[];
- for(let k=1;k<lines.length;k++){const cols=lines[k].split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'').trim());if(cols.length<3)continue;const active=iAc>-1?cols[iAc]:"TRUE";if(active.toLowerCase()==='false')continue;if(!cols[iS])continue;tempRows.push(cols);}
- if(tempRows.length>0){grid.innerHTML='';selService.innerHTML='';}
- tempRows.forEach((cols,idx)=>{const service=cols[iS]||"",desc=cols[iD]||"",price=cols[iP]||"",photo_url=cols[iPh]||"",inclus=cols[iIn]||"Extensions incluses",couleurs=cols[iCo]||"",annonce=cols[iAn]||"",horaire=cols[iHo]||"08h-20h30";if(annonce&&!annonceText)annonceText=annonce;if(horaire)HORAIRE_GLOBAL=horaire;const files=photo_url.split(';').map(s=>s.trim()).filter(Boolean);const trackHtml=files.map(f=>/\.(mp4|mov|webm)$/i.test(f)?`<video src="${f}" autoplay muted loop playsinline preload="metadata"></video>`:`<img src="${f}" alt="${service}" loading="lazy">`).join('')||`<img src="img1.jpeg">`;grid.innerHTML+=`<div class="service-card"><div class="carousel" data-index="0"><div class="carousel-track">${trackHtml}</div><button class="car-btn prev" onclick="moveSlide(this,-1)">‹</button><button class="car-btn next" onclick="moveSlide(this,1)">›</button><div class="car-dots"></div></div><div class="service-body"><h3>${service.toUpperCase()}</h3><p>${desc}</p><span class="badge-inclus">${inclus}</span><div class="price">${price} FCFA</div><button class="btn-more" onclick="openModal(${idx})">Más info →</button></div></div>`;const opt=document.createElement('option');opt.value=`${service} - ${price}F`;opt.textContent=`${service} - ${price}F`;selService.appendChild(opt);if(couleurs){couleurs.split(';').forEach(c=>{if(c.trim())allColors.add(c.trim());});}});if(annonceText&&annonceBar){annonceBar.innerHTML=annonceText;annonceBar.classList.add('active');}if(colorsBox&&allColors.size>0){colorsBox.innerHTML='';[...allColors].forEach((c,i)=>{const [name,foto]=c.split(':').map(s=>s.trim());const imgTag=foto?`<img src="${foto}">`:`<div style="width:100%;height:100%;background:#2B1B12"></div>`;colorsBox.innerHTML+=`<div class="variant-dot ${i===0?'active':''}" onclick="selectColor(this,'${name||c}')">${imgTag}</div>`;});}renderTimes();initCarousels();loadReservasBloqueadas();}catch(e){renderTimes();initCarousels();loadReservasBloqueadas();}
+
+function sleep(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
-renderTimes();initCarousels();loadFromSheet();
-dateInput.addEventListener('change',()=>{selectedTime=null;renderTimes();loadReservasBloqueadas();});
+
+async function verifyBookingToken(token, attempts = 8) {
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    await sleep(1200);
+
+    try {
+      const reservations = await fetchReservas();
+
+      // Le token permet de confirmer notre réservation précise,
+      // et non celle d'une autre cliente sur le même créneau.
+      const found = reservations.some(reservation => reservation.token === token);
+
+      if (found) {
+        reservasBloqueadas = reservations;
+        return true;
+      }
+    } catch (error) {
+      console.warn("Vérification de réservation en attente :", error);
+    }
+  }
+
+  return false;
+}
+
+async function sendWhatsApp() {
+  if (bookingInProgress) return;
+
+  const service = document.getElementById("selService").value;
+  const date = dateInput.value;
+  const name = nameInput.value.trim();
+
+  if (!service) {
+    setStatus("Choisis un service avant de continuer.", true);
+    return;
+  }
+
+  if (!date) {
+    setStatus("Choisis une date.", true);
+    return;
+  }
+
+  if (!name) {
+    setStatus("Entre ton nom pour continuer.", true);
+    nameInput.focus();
+    return;
+  }
+
+  if (!selectedTime) {
+    setStatus("Choisis une heure.", true);
+    return;
+  }
+
+  if (date < dateInput.min) {
+    setStatus("Choisis une date valide.", true);
+    return;
+  }
+
+  setBookingLoading(true);
+  setStatus("Vérification du créneau dans le calendrier partagé...");
+
+  try {
+    // On vérifie d'abord les dernières réservations connues.
+    const latestReservations = await fetchReservas();
+    reservasBloqueadas = latestReservations;
+    renderTimes();
+
+    if (isBloqueado(date, selectedTime)) {
+      selectedTime = null;
+      setStatus("Ce créneau vient d'être réservé. Choisis une autre heure.", true);
+      renderTimes();
+      return;
+    }
+
+    if (countReservasDate(date) >= 3) {
+      selectedTime = null;
+      setStatus("Cette journée est complète. Choisis une autre date.", true);
+      renderTimes();
+      return;
+    }
+
+    const token = makeBookingToken();
+    const form = new URLSearchParams();
+
+    form.append("Date", date);
+    form.append("Time", selectedTime);
+    form.append("Service", service);
+    form.append("Nom", name);
+    form.append("Tellephone", "");
+    form.append("Couleur", selectedColor);
+    form.append("Token", token);
+
+    setStatus("Enregistrement de la réservation...");
+
+    // Le mode no-cors ne permet pas de lire la réponse POST.
+    // On confirme donc l'écriture en recherchant le token dans le GET.
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: form,
+      mode: "no-cors"
+    });
+
+    const confirmed = await verifyBookingToken(token);
+
+    if (!confirmed) {
+      await loadReservasBloqueadas();
+
+      if (isBloqueado(date, selectedTime)) {
+        selectedTime = null;
+        renderTimes();
+        setStatus(
+          "Ce créneau est maintenant occupé. Ta réservation n'a pas été confirmée. Choisis une autre heure.",
+          true
+        );
+      } else {
+        setStatus(
+          "Nous n'avons pas pu confirmer l'enregistrement. Aucune confirmation WhatsApp n'a été lancée. Réessaie dans un instant.",
+          true
+        );
+      }
+
+      return;
+    }
+
+    // La réservation a été retrouvée dans Google Sheets avec son token.
+    const message = [
+      "Bonjour Reina 👑",
+      `Service: ${service}`,
+      `Couleur: ${selectedColor}`,
+      `Date: ${date}`,
+      `Heure: ${selectedTime} (4h)`,
+      `Nom: ${name}`,
+      "Je t'envoie la capture du paiement Airtel Money."
+    ].join("\n");
+
+    const whatsappURL =
+      `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(message)}`;
+
+    setStatus("Réservation enregistrée ! Ouverture de WhatsApp...");
+    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+
+    document.getElementById("modal").classList.remove("active");
+
+    if (refreshTimer) {
+      clearInterval(refreshTimer);
+      refreshTimer = null;
+    }
+
+    selectedTime = null;
+    await loadReservasBloqueadas();
+
+  } catch (error) {
+    console.error("Erreur de réservation :", error);
+    setStatus(
+      "Impossible de confirmer la réservation. Vérifie ta connexion et réessaie.",
+      true
+    );
+  } finally {
+    setBookingLoading(false);
+  }
+}
+
+function getCol(headers, names) {
+  for (const name of names) {
+    const index = headers.findIndex(header => header.toLowerCase().includes(name));
+    if (index > -1) return index;
+  }
+  return -1;
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i++) {
+    const character = line[i];
+
+    if (character === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        current += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (character === "," && !inQuotes) {
+      result.push(current.trim());
+      current = "";
+    } else {
+      current += character;
+    }
+  }
+
+  result.push(current.trim());
+  return result;
+}
+
+async function loadFromSheet() {
+  const grid = document.querySelector(".services-grid");
+  const serviceSelect = document.getElementById("selService");
+  const announcementBar = document.getElementById("annonceBar");
+  const colorsBox = document.getElementById("selColors");
+
+  try {
+    const response = await fetch(SHEET_CSV, {cache:"no-store"});
+
+    if (!response.ok) {
+      throw new Error("Impossible de charger les services.");
+    }
+
+    const csvText = await response.text();
+    const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+
+    if (lines.length < 2) throw new Error("Aucun service trouvé.");
+
+    const headers = parseCSVLine(lines[0]).map(header =>
+      header.replace(/^\uFEFF/, "").toLowerCase()
+    );
+
+    const iService = getCol(headers, ["service"]);
+    const iDescription = getCol(headers, ["description", "desc"]);
+    const iPrice = getCol(headers, ["price", "prix"]);
+    const iPhoto = getCol(headers, ["photo"]);
+    const iIncludes = getCol(headers, ["inclus"]);
+    const iColor = getCol(headers, ["couleur", "color"]);
+    const iAnnouncement = getCol(headers, ["annonce", "promo"]);
+    const iSchedule = getCol(headers, ["horaire", "horario"]);
+    const iActive = getCol(headers, ["active"]);
+
+    if (iService < 0) {
+      throw new Error("La colonne Service est introuvable.");
+    }
+
+    const rows = [];
+
+    for (let index = 1; index < lines.length; index++) {
+      const columns = parseCSVLine(lines[index]);
+      if (!columns[iService]) continue;
+
+      const active = iActive > -1 ? String(columns[iActive]).toLowerCase() : "true";
+      if (active === "false" || active === "non" || active === "0") continue;
+
+      rows.push(columns);
+    }
+
+    if (!rows.length) throw new Error("Aucun service actif.");
+
+    grid.innerHTML = "";
+    serviceSelect.innerHTML = "";
+
+    let announcementText = "";
+    const allColors = new Set();
+
+    rows.forEach((columns, index) => {
+      const service = columns[iService] || "";
+      const description = iDescription > -1 ? columns[iDescription] || "" : "";
+      const price = iPrice > -1 ? columns[iPrice] || "" : "";
+      const photoURL = iPhoto > -1 ? columns[iPhoto] || "" : "";
+      const includes = iIncludes > -1 ? columns[iIncludes] || "Extensions incluses" : "Extensions incluses";
+      const colors = iColor > -1 ? columns[iColor] || "" : "";
+      const announcement = iAnnouncement > -1 ? columns[iAnnouncement] || "" : "";
+      const schedule = iSchedule > -1 ? columns[iSchedule] || "08h-20h30" : "08h-20h30";
+
+      if (announcement && !announcementText) announcementText = announcement;
+      if (schedule) HORAIRE_GLOBAL = schedule;
+
+      const mediaFiles = photoURL.split(";").map(item => item.trim()).filter(Boolean);
+
+      const track = document.createElement("div");
+      track.className = "carousel-track";
+
+      if (mediaFiles.length) {
+        mediaFiles.forEach(file => {
+          if (/\.(mp4|mov|webm)(\?.*)?$/i.test(file)) {
+            const video = document.createElement("video");
+            video.src = file;
+            video.autoplay = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.preload = "metadata";
+            track.appendChild(video);
+          } else {
+            const image = document.createElement("img");
+            image.src = file;
+            image.alt = service;
+            image.loading = "lazy";
+            track.appendChild(image);
+          }
+        });
+      } else {
+        const image = document.createElement("img");
+        image.src = "img1.jpeg";
+        image.alt = service;
+        image.loading = "lazy";
+        track.appendChild(image);
+      }
+
+      const carousel = document.createElement("div");
+      carousel.className = "carousel";
+      carousel.dataset.index = "0";
+      carousel.appendChild(track);
+
+      const previousButton = document.createElement("button");
+      previousButton.type = "button";
+      previousButton.className = "car-btn prev";
+      previousButton.textContent = "‹";
+      previousButton.setAttribute("aria-label", "Photo précédente");
+      previousButton.onclick = () => moveSlide(previousButton, -1);
+
+      const nextButton = document.createElement("button");
+      nextButton.type = "button";
+      nextButton.className = "car-btn next";
+      nextButton.textContent = "›";
+      nextButton.setAttribute("aria-label", "Photo suivante");
+      nextButton.onclick = () => moveSlide(nextButton, 1);
+
+      const dots = document.createElement("div");
+      dots.className = "car-dots";
+
+      carousel.append(previousButton, nextButton, dots);
+
+      const body = document.createElement("div");
+      body.className = "service-body";
+
+      const heading = document.createElement("h3");
+      heading.textContent = service.toUpperCase();
+
+      const descriptionElement = document.createElement("p");
+      descriptionElement.textContent = description;
+
+      const inclusionBadge = document.createElement("span");
+      inclusionBadge.className = "badge-inclus";
+      inclusionBadge.textContent = includes;
+
+      const priceElement = document.createElement("div");
+      priceElement.className = "price";
+      priceElement.textContent = `${price} FCFA`;
+
+      const moreButton = document.createElement("button");
+      moreButton.type = "button";
+      moreButton.className = "btn-more";
+      moreButton.textContent = "Más info →";
+      moreButton.onclick = () => openModal(index);
+
+      body.append(heading, descriptionElement, inclusionBadge, priceElement, moreButton);
+
+      const card = document.createElement("div");
+      card.className = "service-card";
+      card.append(carousel, body);
+      grid.appendChild(card);
+
+      const option = document.createElement("option");
+      option.value = `${service} - ${price}F`;
+      option.textContent = `${service} - ${price}F`;
+      serviceSelect.appendChild(option);
+
+      if (colors) {
+        colors.split(";").forEach(color => {
+          if (color.trim()) allColors.add(color.trim());
+        });
+      }
+    });
+
+    if (announcementText) {
+      announcementBar.textContent = announcementText;
+      announcementBar.classList.add("active");
+    }
+
+    if (allColors.size > 0) {
+      colorsBox.innerHTML = "";
+
+      [...allColors].forEach((color, index) => {
+        const parts = color.split(":").map(part => part.trim());
+        const name = parts[0] || color;
+        const photo = parts[1] || "";
+
+        const dot = document.createElement("div");
+        dot.className = "variant-dot" + (index === 0 ? " active" : "");
+
+        if (photo) {
+          const image = document.createElement("img");
+          image.src = photo;
+          image.alt = name;
+          dot.appendChild(image);
+        } else {
+          dot.style.background = "#2B1B12";
+        }
+
+        dot.onclick = () => selectColor(dot, name);
+        colorsBox.appendChild(dot);
+
+        if (index === 0) {
+          selectedColor = name;
+          document.getElementById("colorName").textContent = name;
+        }
+      });
+    }
+
+    initCarousels();
+
+  } catch (error) {
+    console.error("Erreur de chargement des services :", error);
+    grid.innerHTML = "<p style='text-align:center;grid-column:1/-1'>Les services ne sont pas disponibles pour le moment. Réessaie plus tard.</p>";
+  }
+}
+
+dateInput.addEventListener("change", async () => {
+  selectedTime = null;
+  setStatus("");
+  await loadReservasBloqueadas();
+});
+
+document.getElementById("modal").addEventListener("click", event => {
+  if (event.target.id === "modal") closeModal();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeModal();
+});
+
+renderTimes();
+loadFromSheet();
+loadReservasBloqueadas();
 </script>
+
 </body>
 </html>
