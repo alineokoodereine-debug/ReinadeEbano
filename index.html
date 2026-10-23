@@ -482,12 +482,15 @@ async function verifyBookingToken(token, attempts = 8) {
   return false;
 }
 
+
 async function sendWhatsApp() {
   if (bookingInProgress) return;
 
   const service = document.getElementById("selService").value;
   const date = dateInput.value;
   const name = nameInput.value.trim();
+  const time = selectedTime;
+  const color = selectedColor;
 
   if (!service) {
     setStatus("Choisis un service avant de continuer.", true);
@@ -505,13 +508,24 @@ async function sendWhatsApp() {
     return;
   }
 
-  if (!selectedTime) {
+  if (!time) {
     setStatus("Choisis une heure.", true);
     return;
   }
 
-  if (date < dateInput.min) {
+  if (date < dateInput.min || date > dateInput.max) {
     setStatus("Choisis une date valide.", true);
+    return;
+  }
+
+  // Ouvre la fenêtre directement au clic pour éviter le blocage du navigateur.
+  const waWindow = window.open("about:blank", "_blank");
+
+  if (!waWindow) {
+    setStatus(
+      "Autorise les fenêtres pop-up pour ouvrir WhatsApp, puis réessaie.",
+      true
+    );
     return;
   }
 
@@ -519,21 +533,29 @@ async function sendWhatsApp() {
   setStatus("Vérification du créneau dans le calendrier partagé...");
 
   try {
-    // On vérifie d'abord les dernières réservations connues.
+    // Actualise la liste avant d'envoyer la réservation.
     const latestReservations = await fetchReservas();
     reservasBloqueadas = latestReservations;
     renderTimes();
 
-    if (isBloqueado(date, selectedTime)) {
+    if (isBloqueado(date, time)) {
       selectedTime = null;
-      setStatus("Ce créneau vient d'être réservé. Choisis une autre heure.", true);
+      waWindow.close();
+      setStatus(
+        "Ce créneau vient d'être réservé. Choisis une autre heure.",
+        true
+      );
       renderTimes();
       return;
     }
 
     if (countReservasDate(date) >= 3) {
       selectedTime = null;
-      setStatus("Cette journée est complète. Choisis une autre date.", true);
+      waWindow.close();
+      setStatus(
+        "Cette journée est complète. Choisis une autre date.",
+        true
+      );
       renderTimes();
       return;
     }
@@ -542,17 +564,17 @@ async function sendWhatsApp() {
     const form = new URLSearchParams();
 
     form.append("Date", date);
-    form.append("Time", selectedTime);
+    form.append("Time", time);
     form.append("Service", service);
     form.append("Nom", name);
-    form.append("Tellephone", "");
-    form.append("Couleur", selectedColor);
+    form.append("Telephone", "");
+    form.append("Couleur", color);
     form.append("Token", token);
 
     setStatus("Enregistrement de la réservation...");
 
-    // Le mode no-cors ne permet pas de lire la réponse POST.
-    // On confirme donc l'écriture en recherchant le token dans le GET.
+    // no-cors ne permet pas de lire la réponse du POST.
+    // On vérifie donc ensuite que ce token précis apparaît dans le calendrier.
     await fetch(SCRIPT_URL, {
       method: "POST",
       body: form,
@@ -564,39 +586,43 @@ async function sendWhatsApp() {
     if (!confirmed) {
       await loadReservasBloqueadas();
 
-      if (isBloqueado(date, selectedTime)) {
+      if (isBloqueado(date, time)) {
         selectedTime = null;
-        renderTimes();
         setStatus(
           "Ce créneau est maintenant occupé. Ta réservation n'a pas été confirmée. Choisis une autre heure.",
           true
         );
       } else {
         setStatus(
-          "Nous n'avons pas pu confirmer l'enregistrement. Aucune confirmation WhatsApp n'a été lancée. Réessaie dans un instant.",
+          "Impossible de confirmer l'enregistrement. Vérifie ta connexion et réessaie.",
           true
         );
       }
 
+      waWindow.close();
+      renderTimes();
       return;
     }
 
-    // La réservation a été retrouvée dans Google Sheets avec son token.
+    // Le token exact a été retrouvé dans Google Sheets.
     const message = [
       "Bonjour Reina 👑",
       `Service: ${service}`,
-      `Couleur: ${selectedColor}`,
+      `Couleur: ${color}`,
       `Date: ${date}`,
-      `Heure: ${selectedTime} (4h)`,
+      `Heure: ${time} (4h)`,
       `Nom: ${name}`,
-      "Je t'envoie la capture du paiement Airtel Money."
+      `Acompte Airtel Money: 5.000 F — ${AIRTEL_NUM}`,
+      "Je t'enverrai la capture du paiement."
     ].join("\n");
 
     const whatsappURL =
       `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(message)}`;
 
     setStatus("Réservation enregistrée ! Ouverture de WhatsApp...");
-    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+
+    // La fenêtre a été ouverte au clic ; on la redirige maintenant.
+    waWindow.location.href = whatsappURL;
 
     document.getElementById("modal").classList.remove("active");
 
@@ -610,14 +636,21 @@ async function sendWhatsApp() {
 
   } catch (error) {
     console.error("Erreur de réservation :", error);
+
+    if (waWindow && !waWindow.closed) {
+      waWindow.close();
+    }
+
     setStatus(
-      "Impossible de confirmer la réservation. Vérifie ta connexion et réessaie.",
+      "Impossible de vérifier ou de confirmer la réservation. Réessaie dans un instant.",
       true
     );
+
   } finally {
     setBookingLoading(false);
   }
 }
+
 
 function getCol(headers, names) {
   for (const name of names) {
