@@ -32,13 +32,14 @@ h1,h2{font-family:'Cormorant Garamond',serif}
 .times{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}.time-btn{padding:7px 12px;border-radius:20px;border:1px solid rgba(0,0,0,0.14);background:#fff;cursor:pointer;font-size:11.5px}.time-btn.active{background:var(--brown-dark);color:var(--beige)}
 .nota{background:rgba(201,168,106,0.14);border:1px dashed var(--gold);padding:12px;border-radius:10px;font-size:11.5px;margin-top:12px}
 
-/* BLOQUEO COMPARTIDO - 3 HUECOS */
+/* Bloqueo compartido de los tres horarios */
 .time-btn.libre{display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 18px;border-radius:12px;min-width:125px;background:#fff;border:1.5px solid rgba(43,27,18,0.15);font-weight:600}
 .time-btn.libre span{font-weight:800;font-size:14px}
 .time-btn.libre small{font-size:9.5px;opacity:0.65;font-weight:400}
 .time-btn.bloqueado{background:#E8E0D5!important;color:#9A8A7A!important;border:1px dashed #C2B5A3!important;cursor:not-allowed!important;opacity:0.6;text-decoration:line-through;padding:12px 18px;border-radius:12px;min-width:125px}
 .time-btn.active{background:var(--brown-dark)!important;color:var(--beige)!important;border-color:var(--brown-dark)!important}
 .complet-msg{background:#2B1B12;color:#F7F1E8;padding:14px;border-radius:10px;font-size:12.5px;text-align:center;width:100%;font-weight:600;line-height:1.4}
+.btn-gold:disabled{opacity:.6;cursor:wait;box-shadow:none}
 
 @media(max-width:1000px){.services-grid{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr}.hero-img{order:-1;height:400px}.hero-img img{height:400px}.nav-links{display:none}.about{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.insta-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.services-grid{grid-template-columns:1fr}.hero h1{font-size:34px}.hero-img,.hero-img img{height:300px}.field.two{grid-template-columns:1fr}.about-img video{height:360px}.carousel,.carousel-track img,.carousel-track video{height:320px}.insta-card{height:320px}}
